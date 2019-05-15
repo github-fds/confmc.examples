@@ -1,0 +1,4 @@
+verilog work ./syn_define.v
+verilog work ../../design/verilog/fpga.v
+verilog work ../../../iplib/mem_ahb/rtl/verilog/bram_ahb.v
+#verilog work /home/adki/work/projects/ez-usb-fx3/hwlib/trx_ahb/rtl/verilog/bfm_ahb_stub.v

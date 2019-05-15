@@ -1,0 +1,14 @@
+verilog work \
+        -d SIM -d VCD -d VIVADO\
+	-i ../../bench/verilog\
+        -i $CONFMC_HOME/hwlib/gpif2mst/rtl/verilog\
+        -i $CONFMC_HOME/hwlib/trx_axi/rtl/verilog\
+        -i ../../../iplib/mem_axi/bram_simple_dual_port/$FPGA_TYPE/$VIVADO\
+        -i ../../../iplib/mem_axi/rtl/verilog\
+	-i ../../design/verilog\
+           ./sim_define.v\
+           ../../bench/verilog/top.v\
+           ../../beh/verilog/gpif2slv.v\
+	   ../../design/verilog/fpga.v\
+           $CONFMC_HOME/hwlib/trx_axi/rtl/verilog/bfm_axi_vivado.vm\
+           ../../../iplib/mem_axi/rtl/verilog/bram_axi.v

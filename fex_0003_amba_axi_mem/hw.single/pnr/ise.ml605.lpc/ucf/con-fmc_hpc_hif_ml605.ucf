@@ -1,0 +1,35 @@
+########################################################
+## USB Host Interface Signal
+## FMC_HPC
+########################################################
+NET "SL_AD[0]"          LOC = "AN20";   ## C19 on J64
+NET "SL_AD[1]"          LOC = "AN19";   ## C18 on J64
+NET "SL_DT[0]"          LOC = "AF20";   ## G6  on J64
+NET "SL_DT[1]"          LOC = "AF21";   ## G7  on J64
+NET "SL_DT[2]"          LOC = "AK19";   ## D8  on J64
+NET "SL_DT[3]"          LOC = "AL19";   ## D9  on J64
+NET "SL_DT[4]"          LOC = "AC20";   ## H7  on J64
+NET "SL_DT[5]"          LOC = "AD20";   ## H8  on J64
+NET "SL_DT[6]"          LOC = "AC19";   ## G9  on J64
+NET "SL_DT[7]"          LOC = "AD19";   ## G10 on J64
+NET "SL_DT[8]"          LOC = "AF19";   ## H10 on J64
+NET "SL_DT[9]"          LOC = "AE19";   ## H11 on J64
+NET "SL_DT[10]"         LOC = "AG22";   ## D11 on J64
+NET "SL_DT[11]"         LOC = "AH22";   ## D12 on J64
+NET "SL_DT[12]"         LOC = "AG20";   ## C10 on J64
+NET "SL_DT[13]"         LOC = "AG21";   ## C11 on J64
+NET "SL_DT[14]"         LOC = "AK21";   ## H13 on J64
+NET "SL_DT[15]"         LOC = "AJ21";   ## H14 on J64
+NET "SL_CLK_OUT"        LOC = "AK22";   ## G12 on J64
+NET "SL_RST_N"          LOC = "AP19";   ## D17 on J64
+NET "SL_RD_N"           LOC = "AM20";   ## C14 on J64
+NET "SL_WR_N"           LOC = "AM18";   ## D14 on J64
+NET "SL_OE_N"           LOC = "AL18";   ## D15 on J64
+NET "SL_CS_N"           LOC = "AJ22";   ## G13 on J64
+NET "SL_DMA_RDY"        LOC = "AM22";   ## H16 on J64
+NET "SL_WATER_MARK"     LOC = "AL20";   ## C15 on J64
+NET "SL_PKTEND_N"       LOC = "AM21";   ## G15 on J64
+NET "USB_INT_N"         LOC = "AM26";   ## D24 on J64
+
+NET "SL_*"             IOSTANDARD = LVCMOS25; 
+NET "USB_INT_N"        IOSTANDARD = LVCMOS25; 

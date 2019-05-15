@@ -1,0 +1,8 @@
+
+S0: APB    : 0x0000_0000
+S1: axi_mem: 0x1000_0000 for raw-data (16Kbyte)
+S2: axi_mem: 0x2000_0000 for fft-data (16Kbyte)
+
+P0: xfft_config : 0x0000_0000
+P1: m2s         : 0x0001_0000
+P2: s2m         : 0x0002_0000

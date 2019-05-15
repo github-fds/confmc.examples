@@ -1,0 +1,27 @@
+//--------------------------------------------------------------------
++incdir+$CONFMC_HOME/hwlib/gpif2mst/rtl/verilog
++incdir+$CONFMC_HOME/hwlib/trx_axi/rtl/verilog
+        $CONFMC_HOME/hwlib/trx_axi/rtl/verilog/bfm_axi_vivado.vp
+//--------------------------------------------------------------------
++incdir+../../design/verilog
+        ../../design/verilog/fpga.v
+//--------------------------------------------------------------------
++incdir+$DIR_FIP/amba_axi/rtl/verilog
+        $DIR_FIP/amba_axi/rtl/verilog/amba_axi_m2s3.v
++incdir+$DIR_FIP/axi_to_apb/rtl/verilog
+        $DIR_FIP/axi_to_apb/rtl/verilog/axi_to_apb_s3.v
++incdir+$DIR_FIP/mem_axi_dual/rtl/verilog
++incdir+$DIR_FIP/mem_axi_dual/bram_true_dual_port/$FPGA_TYPE/$VIVADO
+        $DIR_FIP/mem_axi_dual/rtl/verilog/bram_axi_dual.v
++incdir+$DIR_FIP/axi_mem2stream/rtl/verilog
+        $DIR_FIP/axi_mem2stream/rtl/verilog/axi_mem2stream_modelsim_vivado.vp
++incdir+$DIR_FIP/axi_stream2mem/rtl/verilog
+        $DIR_FIP/axi_stream2mem/rtl/verilog/axi_stream2mem_modelsim_vivado.vp
++incdir+$DIR_FIP/xfft_config/rtl/verilog
+        $DIR_FIP/xfft_config/rtl/verilog/xfft_config_modelsim_vivado.vp
++incdir+../../beh/verilog
+        ../../beh/verilog/xfft_16bit256samples_dummy.v
+        ../../beh/verilog/file_writer_fixed.v
+//+incdir+$DIR_FIP/xfft/$FPGA_TYPE/$VIVADO/xfft_16bit256samples
+//        $DIR_FIP/xfft/$FPGA_TYPE/$VIVADO/xfft_16bit256samples/xfft_16bit256samples_sim_netlist.v
+//--------------------------------------------------------------------

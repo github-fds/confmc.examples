@@ -1,0 +1,11 @@
+########################################################
+## Clock
+########################################################
+NET "USER_RST_SW"     LOC        = "H10"; ## SW10 (active-high)
+NET "USER_RST_SW"     IOSTANDARD = LVCMOS15;
+
+NET "USER_CLK_IN"     LOC        = "U23";  ## 66MHz, X5
+NET "USER_CLK_IN"     IOSTANDARD = LVCMOS25; 
+NET "USER_CLK_IN"     TNM_NET = "USER_CLK_IN";
+TIMESPEC "TS_USER_CLK_IN" = PERIOD "USER_CLK_IN" 66Mhz;
+

@@ -1,0 +1,141 @@
+SHELL=/bin/sh
+ARCH=$(shell uname)
+
+TARGET=test
+
+ARCH=$(shell uname -s)
+ifeq ($(findstring MINGW32,$(ARCH)),MINGW32)
+      PLATFORM=mingw
+else ifeq ($(findstring CYGWIN,$(ARCH)),CYGWIN)
+      PLATFORM=cygwin
+else ifeq ($(findstring Linux,$(ARCH)),Linux)
+      PLATFORM=linux
+endif
+KERN:=$(PLATFORM)
+MACHINE:=$(shell uname -m)
+MACH:=$(MACHINE)
+PROCESSOR:=$(uname -p)
+
+ifndef CONFMC_HOME
+       $(warning CONFMC_HOME environment variable not defined)
+       export CONFMC_HOME=${HOME}/work/projects/ez-usb-fx3
+       ifdef PATH
+         export PATH=$(CONFMC_HOME)/bin:$(shell printenv PATH)
+       else
+         export PATH=$(CONFMC_HOME)/bin
+       endif
+       ifdef LD_LIBRARY_PATH
+         export LD_LIBRARY_PATH=$(CONFMC_HOME)/lib/$(KERN)_$(MACH):$(shell printenv LD_LIBRARY_PATH)
+       else
+         export LD_LIBRARY_PATH=$(CONFMC_HOME)/lib/$(KERN)_$(MACH)
+       endif
+       ifdef C_INCLUDE_PATH
+         export C_INCLUDE_PATH=$(CONFMC_HOME)/include:$(shell printenv C_INCLUDE_PATH)
+       else
+         export C_INCLUDE_PATH=$(CONFMC_HOME)/include
+       endif
+       ifdef CPLUS_INCLUDE_PATH
+         export CPLUS_INCLUDE_PATH=$(CONFMC_HOME)/include:$(shell printenv CPLUS_INCLUDE_PATH)
+       else
+         export CPLUS_INCLUDE_PATH=$(CONFMC_HOME)/include
+       endif
+       ifdef PYTHONPATH
+         export PYTHONPATH=$(CONFMC_HOME)/conapi/python:$(CONFMC_HOME)/hwlib/trx_axi/api/python:$(shell printenv PYTHONPATH)
+       else
+         export PYTHONPATH=$(CONFMC_HOME)/conapi/python:$(CONFMC_HOME)/hwlib/trx_axi/api/python
+       endif
+endif
+DEFINES=-g
+CFLAGS=-std=gnu99
+LDFLAGS=-lm
+
+ifeq ($(findstring Linux,$(ARCH)),Linux)
+    CC=gcc
+    DEFINES+=
+    CFLAGS+=-I$(CONFMC_HOME)/include
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi -lusb-1.0
+else ifeq ($(findstring MINGW,$(ARCH)),MINGW)
+    CC=gcc
+    DIR_LIBUSB=$(CONFMC_HOME)/conapi/libusb-1.0.22.win
+    DEFINES+=-DCOMPAT_MINGW_MS_VSNPRINTF
+    CFLAGS+=-I$(CONFMC_HOME)/include -I$(DIR_LIBUSB)/include
+    ifeq ($(MACHINE),x86_64)
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
+             -L$(DIR_LIBUSB)/MinGW64/static -lusb-1.0
+    else
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
+             -L$(DIR_LIBUSB)/MinGW32/static -lusb-1.0
+    endif
+else ifeq ($(findstring CYGWIN,$(ARCH)),CYGWIN)
+    ifeq ($(MACHINE),x86_64)
+        CC=$(MACHINE)-w64-mingw32-gcc
+    else
+        CC=$(MACHINE)-w32-mingw32-gcc
+    endif
+    DIR_LIBUSB=$(CONFMC_HOME)/conapi/libusb-1.0.22.win
+    DEFINES+=
+    CFLAGS+=-I$(CONFMC_HOME)/include -I$(DIR_LIBUSB)/include
+    ifeq ($(MACHINE),x86_64)
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
+             -L$(DIR_LIBUSB)/MinGW64/static -lusb-1.0
+    else
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
+             -L$(DIR_LIBUSB)/MinGW32/static -lusb-1.0
+    endif
+endif
+
+ifndef OBJECTDIR
+  OBJECTDIR = obj
+endif
+ifeq (${wildcard $(OBJECTDIR)},)
+  DUMMY:= $(shell mkdir $(OBJECTDIR))
+else
+  DUMMY:= $(shell rm -rf $(OBJECTDIR))
+  DUMMY:= $(shell mkdir $(OBJECTDIR))
+endif
+
+DIR_IPLIB=../../iplib
+
+DEFINES+=-DTRX_BFM -DTRX_AXI -DRIGOR -DVERBOSE
+CFLAGS+=-Isrc -I${CONFMC_HOME}/hwlib/trx_axi/api/c\
+        -I${DIR_IPLIB}/xfft_config/api/c\
+        -I${DIR_IPLIB}/axi_mem2stream/api/c\
+        -I${DIR_IPLIB}/axi_stream2mem/api/c
+
+OBJS    = $(SRC:.c=.o)
+
+H_DIR      = src:${CONFMC_HOME}/hwlib/trx_axi/api/c\
+                :$(CONFMC_HOME)/include\
+                :${DIR_IPLIB}/xfft_config/api/c\
+                :${DIR_IPLIB}/axi_mem2stream/api/c\
+                :${DIR_IPLIB}/axi_stream2mem/api/c
+C_DIR      = src:${CONFMC_HOME}/hwlib/trx_axi/api/c\
+                :${DIR_IPLIB}/xfft_config/api/c\
+                :${DIR_IPLIB}/axi_mem2stream/api/c\
+                :${DIR_IPLIB}/axi_stream2mem/api/c
+
+vpath %.h  $(H_DIR)
+vpath %.c  $(C_DIR)
+
+$(OBJECTDIR)/%.o: %.c
+	$(CC) -c $(DEFINES) $(CFLAGS) -o $@ $<
+
+$(TARGET): $(addprefix $(OBJECTDIR)/,$(OBJS))
+	$(CC) -o $(TARGET) $^ $(LDFLAGS)
+
+pre:
+	if [ -f compile.log ]; then /bin/rm -f compile.log; fi
+
+clean:
+	/bin/rm -fr obj
+	/bin/rm -f  $(TARGET)
+	/bin/rm -f  $(TARGET).exe
+	/bin/rm -f  data_float.txt data_fixed.txt data_float_all.txt
+	/bin/rm -f  fft_float.txt fft_fixed.txt fft_float_all.txt
+	/bin/rm -f  ifft_float.txt ifft_fixed.txt ifft_float_all.txt
+
+cleanup clobber: clean
+
+cleanupall: cleanup
+
+# $ make DEFINES=-DDEBUG=1

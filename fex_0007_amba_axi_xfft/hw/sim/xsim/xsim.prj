@@ -1,0 +1,29 @@
+verilog work \
+        -d SIM -d VCD -d VIVADO -d XSIM_PROTECTED\
+	-i $CONFMC_HOME/hwlib/gpif2mst/rtl/verilog\
+	-i $CONFMC_HOME/hwlib/trx_axi/rtl/verilog\
+        -i $DIR_FIP/amba_axi/rtl/verilog\
+        -i $DIR_FIP/axi_to_apb/rtl/verilog\
+        -i $DIR_FIP/mem_axi_dual/rtl/verilog\
+        -i $DIR_FIP/mem_axi_dual/bram_true_dual_port/$FPGA_TYPE/$VIVADO\
+        -i $DIR_FIP/axi_mem2stream/rtl/verilog\
+        -i $DIR_FIP/axi_mem2stream/fifo_async/$FPGA_TYPE/$VIVADO\
+        -i $DIR_FIP/axi_stream2mem/rtl/verilog\
+        -i $DIR_FIP/axi_stream2mem/fifo_async/$FPGA_TYPE/$VIVADO\
+        -i $DIR_FIP/xfft_config/rtl/verilog\
+	-i ../../bench/verilog\
+	-i ../../beh/verilog\
+	-i ../../design/verilog\
+           ./sim_define.v\
+           ../../bench/verilog/top.v\
+           ../../beh/verilog/gpif2slv.v\
+           ../../beh/verilog/file_writer_fixed.v\
+           ../../design/verilog/fpga.v\
+	   $CONFMC_HOME/hwlib/trx_axi/rtl/verilog/bfm_axi_vivado.vm\
+           $DIR_FIP/amba_axi/rtl/verilog/amba_axi_m2s3.v\
+           $DIR_FIP/axi_to_apb/rtl/verilog/axi_to_apb_s3.v\
+           $DIR_FIP/mem_axi_dual/rtl/verilog/bram_axi_dual.v\
+           $DIR_FIP/axi_mem2stream/rtl/verilog/axi_mem2stream_xsim.vp\
+           $DIR_FIP/axi_stream2mem/rtl/verilog/axi_stream2mem_xsim.vp\
+           $DIR_FIP/xfft_config/rtl/verilog/xfft_config_xsim.vp\
+           $DIR_FIP/xfft/$FPGA_TYPE/$VIVADO/xfft_16bit256samples/xfft_16bit256samples_sim_netlist.v

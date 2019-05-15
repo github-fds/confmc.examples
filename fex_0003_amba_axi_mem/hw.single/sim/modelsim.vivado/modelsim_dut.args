@@ -1,0 +1,14 @@
+//--------------------------------------------------------------------
++incdir+$CONFMC_HOME/hwlib/gpif2mst/rtl/verilog
++incdir+$CONFMC_HOME/hwlib/trx_axi/rtl/verilog
+        $CONFMC_HOME/hwlib/trx_axi/rtl/verilog/bfm_axi_vivado.vp
+//--------------------------------------------------------------------
+//+incdir+../../../iplib/mem_axi/beh/verilog
+//        ../../../iplib/mem_axi/beh/verilog/mem_axi_sim.v
++incdir+../../../iplib/mem_axi/bram_simple_dual_port/$FPGA_TYPE/$VIVADO
++incdir+../../../iplib/mem_axi/rtl/verilog
+        ../../../iplib/mem_axi/rtl/verilog/bram_axi.v
+//--------------------------------------------------------------------
++incdir+../../design/verilog
+        ../../design/verilog/fpga.v
+//--------------------------------------------------------------------

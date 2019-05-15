@@ -1,0 +1,618 @@
+// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// --------------------------------------------------------------------------------
+// Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
+// Date        : Sat May 11 23:37:33 2019
+// Host        : AndoUbuntu running 64-bit Ubuntu 16.04.6 LTS
+// Command     : write_verilog -force -mode funcsim xfft_config.vm
+// Design      : xfft_config
+// Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
+//               or synthesized. This netlist cannot be used for SDF annotated simulation.
+// Device      : xc7z020clg484-1
+// --------------------------------------------------------------------------------
+`timescale 1 ps / 1 ps
+
+(* AXIS_WIDTH = "8" *) (* CSRA_CONFIG = "8'b00010100" *) (* CSRA_RESET = "8'b00010000" *) 
+(* CSRA_STATUS = "8'b00011000" *) (* CSRA_VERSION = "8'b00000000" *) (* ST_DONE = "2" *) 
+(* ST_IDLE = "0" *) (* ST_READY = "1" *) (* VERSION = "538510352" *) 
+(* NotValidForBitStream *)
+module xfft_config
+   (PRESETn,
+    PCLK,
+    PSEL,
+    PENABLE,
+    PADDR,
+    PWRITE,
+    PRDATA,
+    PWDATA,
+    axis_clk,
+    axis_config_resetn,
+    axis_config_tready,
+    axis_config_tvalid,
+    axis_config_tdata);
+  input PRESETn;
+  input PCLK;
+  input PSEL;
+  input PENABLE;
+  input [31:0]PADDR;
+  input PWRITE;
+  output [31:0]PRDATA;
+  input [31:0]PWDATA;
+  input axis_clk;
+  (* mark_debug = "true" *) output axis_config_resetn;
+  (* mark_debug = "true" *) input axis_config_tready;
+  (* mark_debug = "true" *) output axis_config_tvalid;
+  (* mark_debug = "true" *) output [7:0]axis_config_tdata;
+
+  wire \<const0> ;
+  wire [31:0]PADDR;
+  wire PCLK;
+  wire PENABLE;
+  wire [29:0]\^PRDATA ;
+  wire \PRDATA[10]_INST_0_i_1_n_0 ;
+  wire \PRDATA[4]_INST_0_i_1_n_0 ;
+  wire \PRDATA[7]_INST_0_i_1_n_0 ;
+  wire PRESETn;
+  wire PSEL;
+  wire [31:0]PWDATA;
+  wire PWRITE;
+  wire axis_clk;
+  (* MARK_DEBUG *) wire axis_config_resetn;
+  (* MARK_DEBUG *) wire [7:0]axis_config_tdata;
+  wire \axis_config_tdata[0]_i_1_n_0 ;
+  wire \axis_config_tdata[1]_i_1_n_0 ;
+  wire \axis_config_tdata[2]_i_1_n_0 ;
+  wire \axis_config_tdata[3]_i_1_n_0 ;
+  wire \axis_config_tdata[4]_i_1_n_0 ;
+  wire \axis_config_tdata[5]_i_1_n_0 ;
+  wire \axis_config_tdata[6]_i_1_n_0 ;
+  wire \axis_config_tdata[7]_i_1_n_0 ;
+  (* MARK_DEBUG *) wire axis_config_tready;
+  (* MARK_DEBUG *) wire axis_config_tvalid;
+  wire axis_config_tvalid_i_1_n_0;
+  (* MARK_DEBUG *) wire clear;
+  wire clear_i_1_n_0;
+  wire clear_i_2_n_0;
+  (* MARK_DEBUG *) wire [1:0]clear_sync;
+  wire csr_done;
+  wire csr_done_i_1_n_0;
+  wire [1:0]p_0_in__0;
+  (* MARK_DEBUG *) wire reg_reset;
+  wire reg_reset_i_2_n_0;
+  wire reg_reset_i_3_n_0;
+  wire reg_reset_reg0;
+  (* MARK_DEBUG *) wire [1:0]state;
+  (* MARK_DEBUG *) wire update;
+  wire update_i_1_n_0;
+  (* MARK_DEBUG *) wire [1:0]update_sync;
+  wire \update_sync[0]_i_1_n_0 ;
+  wire \update_sync[1]_i_1_n_0 ;
+
+  assign PRDATA[31] = \<const0> ;
+  assign PRDATA[30] = \<const0> ;
+  assign PRDATA[29] = \^PRDATA [29];
+  assign PRDATA[28] = \<const0> ;
+  assign PRDATA[27] = \<const0> ;
+  assign PRDATA[26] = \<const0> ;
+  assign PRDATA[25] = \<const0> ;
+  assign PRDATA[24] = \<const0> ;
+  assign PRDATA[23] = \<const0> ;
+  assign PRDATA[22] = \<const0> ;
+  assign PRDATA[21] = \<const0> ;
+  assign PRDATA[20] = \^PRDATA [29];
+  assign PRDATA[19] = \^PRDATA [29];
+  assign PRDATA[18] = \<const0> ;
+  assign PRDATA[17] = \<const0> ;
+  assign PRDATA[16] = \^PRDATA [29];
+  assign PRDATA[15] = \<const0> ;
+  assign PRDATA[14] = \<const0> ;
+  assign PRDATA[13] = \<const0> ;
+  assign PRDATA[12] = \<const0> ;
+  assign PRDATA[11] = \<const0> ;
+  assign PRDATA[10] = \^PRDATA [29];
+  assign PRDATA[9] = \<const0> ;
+  assign PRDATA[8] = \<const0> ;
+  assign PRDATA[7:0] = \^PRDATA [7:0];
+  GND GND
+       (.G(\<const0> ));
+  LUT6 #(
+    .INIT(64'h0022000000F00000)) 
+    \PRDATA[0]_INST_0 
+       (.I0(axis_config_tdata[0]),
+        .I1(PADDR[3]),
+        .I2(axis_config_resetn),
+        .I3(\PRDATA[4]_INST_0_i_1_n_0 ),
+        .I4(\PRDATA[7]_INST_0_i_1_n_0 ),
+        .I5(PADDR[2]),
+        .O(\^PRDATA [0]));
+  LUT6 #(
+    .INIT(64'h0000000100000000)) 
+    \PRDATA[10]_INST_0 
+       (.I0(PADDR[1]),
+        .I1(PADDR[0]),
+        .I2(PADDR[4]),
+        .I3(PADDR[3]),
+        .I4(PADDR[2]),
+        .I5(\PRDATA[10]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [29]));
+  LUT5 #(
+    .INIT(32'h00000004)) 
+    \PRDATA[10]_INST_0_i_1 
+       (.I0(PWRITE),
+        .I1(PSEL),
+        .I2(PADDR[7]),
+        .I3(PADDR[6]),
+        .I4(PADDR[5]),
+        .O(\PRDATA[10]_INST_0_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000CA000000000)) 
+    \PRDATA[1]_INST_0 
+       (.I0(axis_config_tready),
+        .I1(axis_config_tdata[1]),
+        .I2(PADDR[3]),
+        .I3(PADDR[2]),
+        .I4(\PRDATA[4]_INST_0_i_1_n_0 ),
+        .I5(\PRDATA[7]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [1]));
+  LUT6 #(
+    .INIT(64'h00000CA000000000)) 
+    \PRDATA[2]_INST_0 
+       (.I0(axis_config_tvalid),
+        .I1(axis_config_tdata[2]),
+        .I2(PADDR[3]),
+        .I3(PADDR[2]),
+        .I4(\PRDATA[4]_INST_0_i_1_n_0 ),
+        .I5(\PRDATA[7]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [2]));
+  LUT6 #(
+    .INIT(64'h00000CA000000000)) 
+    \PRDATA[3]_INST_0 
+       (.I0(csr_done),
+        .I1(axis_config_tdata[3]),
+        .I2(PADDR[3]),
+        .I3(PADDR[2]),
+        .I4(\PRDATA[4]_INST_0_i_1_n_0 ),
+        .I5(\PRDATA[7]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [3]));
+  LUT6 #(
+    .INIT(64'h000000000080000C)) 
+    \PRDATA[4]_INST_0 
+       (.I0(axis_config_tdata[4]),
+        .I1(\PRDATA[10]_INST_0_i_1_n_0 ),
+        .I2(PADDR[2]),
+        .I3(PADDR[3]),
+        .I4(PADDR[4]),
+        .I5(\PRDATA[4]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [4]));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \PRDATA[4]_INST_0_i_1 
+       (.I0(PADDR[1]),
+        .I1(PADDR[0]),
+        .O(\PRDATA[4]_INST_0_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000002000000000)) 
+    \PRDATA[5]_INST_0 
+       (.I0(PADDR[2]),
+        .I1(PADDR[3]),
+        .I2(axis_config_tdata[5]),
+        .I3(PADDR[0]),
+        .I4(PADDR[1]),
+        .I5(\PRDATA[7]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [5]));
+  LUT6 #(
+    .INIT(64'h0000002000000000)) 
+    \PRDATA[6]_INST_0 
+       (.I0(PADDR[2]),
+        .I1(PADDR[3]),
+        .I2(axis_config_tdata[6]),
+        .I3(PADDR[0]),
+        .I4(PADDR[1]),
+        .I5(\PRDATA[7]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [6]));
+  LUT6 #(
+    .INIT(64'h0000002000000000)) 
+    \PRDATA[7]_INST_0 
+       (.I0(PADDR[2]),
+        .I1(PADDR[3]),
+        .I2(axis_config_tdata[7]),
+        .I3(PADDR[0]),
+        .I4(PADDR[1]),
+        .I5(\PRDATA[7]_INST_0_i_1_n_0 ),
+        .O(\^PRDATA [7]));
+  LUT6 #(
+    .INIT(64'h0000010000000000)) 
+    \PRDATA[7]_INST_0_i_1 
+       (.I0(PADDR[5]),
+        .I1(PADDR[6]),
+        .I2(PADDR[7]),
+        .I3(PSEL),
+        .I4(PWRITE),
+        .I5(PADDR[4]),
+        .O(\PRDATA[7]_INST_0_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    axis_config_resetn_inferred_i_1
+       (.I0(PRESETn),
+        .I1(reg_reset),
+        .O(axis_config_resetn));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[0]_i_1 
+       (.I0(PWDATA[0]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[0]),
+        .O(\axis_config_tdata[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[1]_i_1 
+       (.I0(PWDATA[1]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[1]),
+        .O(\axis_config_tdata[1]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[2]_i_1 
+       (.I0(PWDATA[2]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[2]),
+        .O(\axis_config_tdata[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[3]_i_1 
+       (.I0(PWDATA[3]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[3]),
+        .O(\axis_config_tdata[3]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[4]_i_1 
+       (.I0(PWDATA[4]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[4]),
+        .O(\axis_config_tdata[4]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[5]_i_1 
+       (.I0(PWDATA[5]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[5]),
+        .O(\axis_config_tdata[5]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[6]_i_1 
+       (.I0(PWDATA[6]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[6]),
+        .O(\axis_config_tdata[6]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \axis_config_tdata[7]_i_1 
+       (.I0(PWDATA[7]),
+        .I1(PADDR[2]),
+        .I2(axis_config_tdata[7]),
+        .O(\axis_config_tdata[7]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[0] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[0]_i_1_n_0 ),
+        .Q(axis_config_tdata[0]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[1] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[1]_i_1_n_0 ),
+        .Q(axis_config_tdata[1]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[2] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[2]_i_1_n_0 ),
+        .Q(axis_config_tdata[2]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[3] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[3]_i_1_n_0 ),
+        .Q(axis_config_tdata[3]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[4] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[4]_i_1_n_0 ),
+        .Q(axis_config_tdata[4]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[5] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[5]_i_1_n_0 ),
+        .Q(axis_config_tdata[5]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[6] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[6]_i_1_n_0 ),
+        .Q(axis_config_tdata[6]));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE \axis_config_tdata_reg[7] 
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(\axis_config_tdata[7]_i_1_n_0 ),
+        .Q(axis_config_tdata[7]));
+  LUT5 #(
+    .INIT(32'h55045F04)) 
+    axis_config_tvalid_i_1
+       (.I0(state[0]),
+        .I1(update_sync[1]),
+        .I2(state[1]),
+        .I3(axis_config_tvalid),
+        .I4(axis_config_tready),
+        .O(axis_config_tvalid_i_1_n_0));
+  (* KEEP = "yes" *) 
+  FDCE axis_config_tvalid_reg
+       (.C(axis_clk),
+        .CE(1'b1),
+        .CLR(clear_i_2_n_0),
+        .D(axis_config_tvalid_i_1_n_0),
+        .Q(axis_config_tvalid));
+  LUT5 #(
+    .INIT(32'h0808FAAA)) 
+    clear_i_1
+       (.I0(clear),
+        .I1(update_sync[1]),
+        .I2(state[0]),
+        .I3(axis_config_tready),
+        .I4(state[1]),
+        .O(clear_i_1_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    clear_i_2
+       (.I0(axis_config_resetn),
+        .O(clear_i_2_n_0));
+  (* KEEP = "yes" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    clear_reg
+       (.C(axis_clk),
+        .CE(1'b1),
+        .CLR(clear_i_2_n_0),
+        .D(clear_i_1_n_0),
+        .Q(clear));
+  (* KEEP = "yes" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \clear_sync_reg[0] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(reg_reset_i_3_n_0),
+        .D(clear),
+        .Q(clear_sync[0]));
+  (* KEEP = "yes" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \clear_sync_reg[1] 
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(reg_reset_i_3_n_0),
+        .D(clear_sync[0]),
+        .Q(clear_sync[1]));
+  LUT4 #(
+    .INIT(16'h5B50)) 
+    csr_done_i_1
+       (.I0(state[0]),
+        .I1(update_sync[1]),
+        .I2(state[1]),
+        .I3(csr_done),
+        .O(csr_done_i_1_n_0));
+  FDCE #(
+    .INIT(1'b0)) 
+    csr_done_reg
+       (.C(axis_clk),
+        .CE(1'b1),
+        .CLR(clear_i_2_n_0),
+        .D(csr_done_i_1_n_0),
+        .Q(csr_done));
+  LUT3 #(
+    .INIT(8'h80)) 
+    reg_reset_i_1
+       (.I0(PWRITE),
+        .I1(PSEL),
+        .I2(PENABLE),
+        .O(reg_reset_reg0));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    reg_reset_i_2
+       (.I0(reg_reset),
+        .I1(PADDR[2]),
+        .I2(PWDATA[0]),
+        .O(reg_reset_i_2_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    reg_reset_i_3
+       (.I0(PRESETn),
+        .O(reg_reset_i_3_n_0));
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    reg_reset_reg
+       (.C(PCLK),
+        .CE(reg_reset_reg0),
+        .CLR(reg_reset_i_3_n_0),
+        .D(reg_reset_i_2_n_0),
+        .Q(reg_reset));
+  LUT4 #(
+    .INIT(16'h0074)) 
+    \state[0]_i_1 
+       (.I0(axis_config_tready),
+        .I1(state[0]),
+        .I2(update_sync[1]),
+        .I3(state[1]),
+        .O(p_0_in__0[0]));
+  LUT4 #(
+    .INIT(16'h22C0)) 
+    \state[1]_i_1 
+       (.I0(update_sync[1]),
+        .I1(state[0]),
+        .I2(axis_config_tready),
+        .I3(state[1]),
+        .O(p_0_in__0[1]));
+  (* FSM_ENCODED_STATES = "ST_IDLE:00,ST_READY:01,ST_DONE:10" *) 
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \state_reg[0] 
+       (.C(axis_clk),
+        .CE(1'b1),
+        .CLR(clear_i_2_n_0),
+        .D(p_0_in__0[0]),
+        .Q(state[0]));
+  (* FSM_ENCODED_STATES = "ST_IDLE:00,ST_READY:01,ST_DONE:10" *) 
+  (* KEEP = "yes" *) 
+  (* mark_debug = "true" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \state_reg[1] 
+       (.C(axis_clk),
+        .CE(1'b1),
+        .CLR(clear_i_2_n_0),
+        .D(p_0_in__0[1]),
+        .Q(state[1]));
+  LUT5 #(
+    .INIT(32'hFFF0D0D0)) 
+    update_i_1
+       (.I0(clear_sync[0]),
+        .I1(clear_sync[1]),
+        .I2(update),
+        .I3(PADDR[2]),
+        .I4(reg_reset_reg0),
+        .O(update_i_1_n_0));
+  (* KEEP = "yes" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    update_reg
+       (.C(PCLK),
+        .CE(1'b1),
+        .CLR(reg_reset_i_3_n_0),
+        .D(update_i_1_n_0),
+        .Q(update));
+  LUT3 #(
+    .INIT(8'h70)) 
+    \update_sync[0]_i_1 
+       (.I0(state[0]),
+        .I1(state[1]),
+        .I2(update),
+        .O(\update_sync[0]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h70)) 
+    \update_sync[1]_i_1 
+       (.I0(state[0]),
+        .I1(state[1]),
+        .I2(update_sync[0]),
+        .O(\update_sync[1]_i_1_n_0 ));
+  (* KEEP = "yes" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \update_sync_reg[0] 
+       (.C(axis_clk),
+        .CE(1'b1),
+        .CLR(clear_i_2_n_0),
+        .D(\update_sync[0]_i_1_n_0 ),
+        .Q(update_sync[0]));
+  (* KEEP = "yes" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \update_sync_reg[1] 
+       (.C(axis_clk),
+        .CE(1'b1),
+        .CLR(clear_i_2_n_0),
+        .D(\update_sync[1]_i_1_n_0 ),
+        .Q(update_sync[1]));
+endmodule
+`ifndef GLBL
+`define GLBL
+`timescale  1 ps / 1 ps
+
+module glbl;// ();
+
+    parameter ROC_WIDTH = 100000;
+    parameter TOC_WIDTH = 0;
+
+//--------   STARTUP Globals --------------
+    wire GSR;
+    wire GTS;
+    wire GWE;
+    wire PRLD;
+    tri1 p_up_tmp;
+    tri (weak1, strong0) PLL_LOCKG = p_up_tmp;
+
+    wire PROGB_GLBL;
+    wire CCLKO_GLBL;
+    wire FCSBO_GLBL;
+    wire [3:0] DO_GLBL;
+    wire [3:0] DI_GLBL;
+   
+    reg GSR_int;
+    reg GTS_int;
+    reg PRLD_int;
+
+//--------   JTAG Globals --------------
+    wire JTAG_TDO_GLBL;
+    wire JTAG_TCK_GLBL;
+    wire JTAG_TDI_GLBL;
+    wire JTAG_TMS_GLBL;
+    wire JTAG_TRST_GLBL;
+
+    reg JTAG_CAPTURE_GLBL;
+    reg JTAG_RESET_GLBL;
+    reg JTAG_SHIFT_GLBL;
+    reg JTAG_UPDATE_GLBL;
+    reg JTAG_RUNTEST_GLBL;
+
+    reg JTAG_SEL1_GLBL = 0;
+    reg JTAG_SEL2_GLBL = 0 ;
+    reg JTAG_SEL3_GLBL = 0;
+    reg JTAG_SEL4_GLBL = 0;
+
+    reg JTAG_USER_TDO1_GLBL = 1'bz;
+    reg JTAG_USER_TDO2_GLBL = 1'bz;
+    reg JTAG_USER_TDO3_GLBL = 1'bz;
+    reg JTAG_USER_TDO4_GLBL = 1'bz;
+
+    assign (strong1, weak0) GSR = GSR_int;
+    assign (strong1, weak0) GTS = GTS_int;
+    assign (weak1, weak0) PRLD = PRLD_int;
+
+    initial begin
+	GSR_int = 1'b1;
+	PRLD_int = 1'b1;
+	#(ROC_WIDTH)
+	GSR_int = 1'b0;
+	PRLD_int = 1'b0;
+    end
+
+    initial begin
+	GTS_int = 1'b1;
+	#(TOC_WIDTH)
+	GTS_int = 1'b0;
+    end
+
+endmodule
+`endif

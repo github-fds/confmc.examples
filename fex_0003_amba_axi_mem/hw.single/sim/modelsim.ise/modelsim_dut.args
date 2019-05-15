@@ -1,0 +1,13 @@
+//--------------------------------------------------------------------
++incdir+$CONFMC_HOME/hwlib/gpif2mst/rtl/verilog
++incdir+$CONFMC_HOME/hwlib/trx_axi/rtl/verilog
+        $CONFMC_HOME/hwlib/trx_axi/rtl/verilog/bfm_axi_ise.vp
+//--------------------------------------------------------------------
+//+incdir+../../../iplib/mem_axi/rtl/verilog
+//        ../../../iplib/mem_axi/rtl/verilog/mem_axi.v
++incdir+../../../iplib/mem_axi/bram_simple_dual_port/v6/ise14
+        ../../../iplib/mem_axi/rtl/verilog/bram_axi.v
+//--------------------------------------------------------------------
++incdir+../../design/verilog
+        ../../design/verilog/fpga.v
+//--------------------------------------------------------------------

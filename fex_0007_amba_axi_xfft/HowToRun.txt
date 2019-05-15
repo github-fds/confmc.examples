@@ -1,0 +1,73 @@
+[Prerequisites]
+1. CON-FMC board
+2. CON-FMC package installed
+3. FPGA board with FMC connector
+4. Xilinx package: Vivado
+5. (Optional) HDL simulator: ModelSim
+6. GNUPLOT, Python
+
+[FPGA for Vivado]
+1. Make sure 'XILINX_VIVADO' environemt varialbe indicte the directory of Vivado package
+   - Simply run '$ source /opt/Xilinx/Vivado/2018.3/settings64.sh'
+   E.g., /opt/Xilinx/Vivado/2018.3
+2. Make sure 'CONFMC_HOME' environment variable indicate the directory of CON-FMC package
+   - Simply run '$ source /opt/confmc/2019.02/setting.sh'
+   E.g., /opt/confmc/2019.02
+3. Simulation
+   * It uses FFT behavioral model instead of XFFT due to Xilinx Protected code.
+   $ cd hw/sim/modelsim.vivado
+   $ vi sim_define.v
+     - define 'XFFT_SINGLE_SIN'
+   $ make
+   $ make plot
+   $ make plot_data
+   $ make plot_fft
+   $ make plot_twiddle
+4. (Optional) Simulation (when you have plain BFM code)
+   $ cd hw/sim.all/xsim
+   $ vi sim_define.v
+     - define 'XFFT_SINGLE_SIN'
+   $ make
+   $ make plot
+   $ make plot_data
+   $ make plot_fft
+   $ make plot_twiddle
+5. Implementation
+   $ cd hw/pnr/vivado.zedboard
+   $ make ILA=0 GUI=0
+6. (Optional) Implement with ILA
+   - Do this after running the step 5
+   $ cd hw/pnr/vivado.zedboard/ila
+   $ make
+     - Select 'Set Up Debug' menu below 'NETLIST ANALYSIS'
+     - Select nets
+     - Quit
+   $ cd ..
+   // go to hw/pnr/vivado.zedboard
+   $ make ILA=1 GUI=1
+7. Program FPGA
+   - connect USB-to-JTAG
+   $ vivado
+     - invoke HW manager and down load 'fpga.bit'
+   or
+   $ cd download
+   $ make
+8. Run
+   - connect USB-to-JTAG
+   - connect USB to CON-FMC
+   - download bit-stream
+      . go to  "hw/pnr/vivado.zedboard/download"
+      . run "make"
+   - compile and run
+      . go to "sw.native/test_mem"
+      . run 'make cleanup; make run'
+   - compile and run
+      . go to "sw.native/test_xfft"
+      . run 'make cleanup; make run'
+      . run 'make plot'
+      . run 'make plot_data'
+      . run 'make plot_fft'
+
+Have fun.
+Ando
+2019.04.10.

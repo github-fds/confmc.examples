@@ -1,0 +1,59 @@
+[Prerequisites]
+1. CON-FMC board
+2. CON-FMC package installed
+3. FPGA board with FMC connector
+4. Xilinx package: ISE or Vivado
+5. (Optional) HDL simulator: ModelSim
+
+[FPGA for ISE]
+1. Make sure 'XILINX' environemt varialbe indicte the directory of ISE package
+   - Simply run '$ source /opt/Xilinx/14.7/ISE_DS/settings64.sh'
+   E.g., /opt/Xilinx/14.7/ISE_DS/ISE
+2. Make sure 'CONFMC_HOME' environment variable indicate the directory of CON-FMC package
+   - Simply run '$ source /opt/confmc/2018.05/setting64.sh'
+   E.g., /opt/confmc/2018.05
+3. Simulation
+   - go to "hw.single/sim/modelsim.ise"
+   - run "make"
+4. Logic synthesis
+   - go to "hw.single/syn/xst.v6"
+   - run "make"
+5. PnR
+   - go to "hw.single/pnr/ise.ml605.lpc"
+   - run "make"
+6. Run
+   - connect USB to CON-FMC
+   - connect USB-to-JTAG
+   - download bit-stream
+      . go to  "hw.single/pnr/ise.ml605.lpc/impact"
+      . run "make"
+   - compile and run
+      . go to "sw.native/test_mem"
+      . run 'make cleanup; make run'
+
+[FPGA for Vivado]
+1. Make sure 'XILINX_VIVADO' environemt varialbe indicte the directory of Vivado package
+   - Simply run '$ source /opt/Xilinx/Vivado/2017.4/settings64.sh'
+   E.g., /opt/Xilinx/Vivado/2017.4
+2. Make sure 'CONFMC_HOME' environment variable indicate the directory of CON-FMC package
+   - Simply run '$ source /opt/confmc/2018.05/setting64.sh'
+   E.g., /opt/confmc/2018.05
+3. Simulation
+   - go to "hw.single/sim/modelsim.vivado"
+   - run "make"
+4. Logic synthesis and PnR (implementation)
+   - go to "hw.single/pnr/vivado.zc706.lpc"
+   - run "make"
+5. Run
+   - connect USB to CON-FMC
+   - connect USB-to-JTAG
+   - download bit-stream
+      . go to  "hw.single/pnr/vivado.zc706.lpc/download"
+      . run "make"
+   - compile and run
+      . go to "sw.native/test_mem"
+      . run 'make cleanup; make run'
+
+Have fun.
+Ando
+2018.05.04.

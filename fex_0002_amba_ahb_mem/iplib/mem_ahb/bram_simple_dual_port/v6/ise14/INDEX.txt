@@ -1,0 +1,2 @@
+bram_simple_dual_port_32x8KB/     32-bit width, 8Kbyte size (2K-depth)
+bram_simple_dual_port_32x16KB/    32-bit width, 16Kbyte size (4K-depth)
