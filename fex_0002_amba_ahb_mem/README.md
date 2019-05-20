@@ -1,7 +1,4 @@
 # CON-FMC<sup>TM</sup> with AMBA AHB MEM
-This example is prepared in the hope that it will be useful to understand Future Design Systems’ CON-FMC, but WITHOUT ANY WARRANTY. The design is not guaranteed to work on all systems.
-No technical support will be provided for problems that might arise
-
 This example writes and reads memory in the FPGA through USB along with Future Design Systems'' CON-FMC.
 
 ![Example structure](./doc/images/amba_ahb_mem.png "Example structure")
@@ -10,6 +7,9 @@ This example writes and reads memory in the FPGA through USB along with Future D
 **Copyright 2018-2019 Future Design Systems, Inc.**<br>
 This is licensed with the 2-clause BSD license to make the program and library useful in open and closed source products independent of their licensing scheme.<br>
 Each contributor holds copyright over their respective contributions.
+
+This example is prepared in the hope that it will be useful to understand Future Design Systems’ CON-FMC, but WITHOUT ANY WARRANTY. The design is not guaranteed to work on all systems.
+No technical support will be provided for problems that might arise
 
 ## Prerequisites
 This example requires followings.

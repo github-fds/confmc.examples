@@ -6,6 +6,15 @@ These examples are prepared in the hope that it will be useful to understand Fut
 This is licensed with the 2-clause BSD license to make the program and library useful in open and closed source products independent of their licensing scheme.<br>
 Each contributor holds copyright over their respective contributions.
 
+# CON-FMC<sup>TM</sup>
+CON-FMC is a USB 3.0 FMC (FPGA Mezzanine Card) board compliant with the VITA 57.1 standard. CON-FMC can be mounted on FMC (LPC and HPC) and FMC+ (HPC+).
+CON-FMC supports Windows, Linux, Android, Raspberry Pi 3, Odroid series, Samsung ARTIK series, Samsung Galaxy series, ... 
+More details can be found at <a href="http://www.future-ds.com/en/products.html#CON_FMC" target="_blank">here</a>.
+
+![CON-FMC board](con-fmc-raspberry.png "CON-FMC")
+
+---
+
 # 1. <a name="loopback"></a>fex_0001_loopback
 *To be added*
 

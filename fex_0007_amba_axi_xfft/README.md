@@ -1,6 +1,4 @@
 # CON-FMC with XFFT
-This example is prepared in the hope that it will be useful to understand Future Design Systems’ CON-FMC, but WITHOUT ANY WARRANTY. The design is not guaranteed to work on all systems. No technical support will be provided for problems that might arise
-
 This example runs Xilinx FFT (Fast Fourier Transform) along with Future Design Systems'' CON-FMC.
 
 ![Overall structure](./doc/images/con-fmc-xfft.png "Overall structure")
@@ -9,6 +7,9 @@ This example runs Xilinx FFT (Fast Fourier Transform) along with Future Design S
 **Copyright 2018-2019 Future Design Systems, Inc.**<br>
 This is licensed with the 2-clause BSD license to make the program and library useful in open and closed source products independent of their licensing scheme.<br>
 Each contributor holds copyright over their respective contributions.
+
+This example is prepared in the hope that it will be useful to understand Future Design Systems’ CON-FMC, but WITHOUT ANY WARRANTY. The design is not guaranteed to work on all systems. No technical support will be provided for problems that might arise
+
 
 ## Prerequisites
 This example requires followings.
@@ -397,6 +398,8 @@ This example uses following modules and each of this module uses Xilinx IP inter
   * axi_mem2stream
   * axi_stream2mem
   * xfft
+  * amba_axi
+  * axi_to_apb
 
 <details><summary>Click to expand</summary>
 

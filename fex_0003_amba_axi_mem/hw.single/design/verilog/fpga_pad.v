@@ -16,17 +16,17 @@
 //
 // 2018.02.05: Started by Ando Ki.
 //------------------------------------------------------
-`ifdef VCU108
+`ifdef BOARD_VCU108
     wire USER_CLK_IN;
     IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (USER_CLK_IN_P)
                                               ,.IB (USER_CLK_IN_N)
                                               ,.O  (USER_CLK_IN));
-`elsif ZC706
+`elsif BOARD_ZC706
     wire USER_CLK_IN;
     IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (USER_CLK_IN_P)
                                               ,.IB (USER_CLK_IN_N)
                                               ,.O  (USER_CLK_IN));
-`elsif ZC702
+`elsif BOARD_ZC702
     wire USER_CLK_IN;
     IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (USER_CLK_IN_P)
                                               ,.IB (USER_CLK_IN_N)

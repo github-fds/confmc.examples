@@ -48,16 +48,16 @@ module fpga
                , MEM_SIZE=`MEM_SIZE )
 (
        input   wire          USER_RST_SW // U25 // synthesis xc_pulldown = 1
-`ifdef VCU108
+`ifdef BOARD_VCU108
      , input   wire          USER_CLK_IN_P // reference clock input (125)
      , input   wire          USER_CLK_IN_N // reference clock input (125)
-`elsif ZC706
+`elsif BOARD_ZC706
      , input   wire          USER_CLK_IN_P // reference clock input (156.25)
      , input   wire          USER_CLK_IN_N // reference clock input (156.25)
-`elsif ZC702
+`elsif BOARD_ZC702
      , input   wire          USER_CLK_IN_P // reference clock input (156.25)
      , input   wire          USER_CLK_IN_N // reference clock input (156.25)
-`elsif ZED
+`elsif BOARD_ZED
      , input   wire          USER_CLK_IN // reference clock input (66)
 `else
      , input   wire          USER_CLK_IN // reference clock input (66)
@@ -79,22 +79,22 @@ module fpga
      , input   wire  [ 1:0]  SL_MODE
 );
     //--------------------------------------------------------------------------
-    `ifdef ML605
+    `ifdef BOARD_ML605
     localparam USER_CLK_IN_FREQ=66_000_000;
     localparam FPGA_FAMILY="VIRTEX6";
-    `elsif SP605
+    `elsif BOARD_SP605
     localparam USER_CLK_IN_FREQ=27_000_000;
     localparam FPGA_FAMILY="SPARTAN6";
-    `elsif ZC706
+    `elsif BOARD_ZC706
     localparam USER_CLK_IN_FREQ=156_250_000;
     localparam FPGA_FAMILY="ZYNQ7000"; // Zynq-7000
-    `elsif ZC702
+    `elsif BOARD_ZC702
     localparam USER_CLK_IN_FREQ=156_250_000;
     localparam FPGA_FAMILY="ZYNQ7000"; // Zynq-7000
-    `elsif ZED
+    `elsif BOARD_ZED
     localparam USER_CLK_IN_FREQ=100_000_000;
     localparam FPGA_FAMILY="ZYNQ7000"; // Zynq-7000
-    `elsif VCU108
+    `elsif BOARD_VCU108
     localparam USER_CLK_IN_FREQ=125_000_000;
     localparam FPGA_FAMILY="VirtexUS";
     `else

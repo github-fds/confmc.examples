@@ -10,8 +10,6 @@ MAKEFILE	= Makefile
 ifndef XILINX_VIVADO
        $(warning XILINX_VIVADO environment variable not defined)
 endif
-export VIVADO_VERSION = $(shell vivado -version | sed -n 1p | cut -d" " -f 2 | cut -c 2-)
-export VIVADO_VER=vivado.$(VIVADO_VERSION)
 ifndef CONFMC_HOME
        $(warning CONFMC_HOME environment variable not defined)
        export CONFMC_HOME=${HOME}/work/projects/ez-usb-fx3
@@ -22,20 +20,20 @@ export PROJECT_DIR = project_1
 export PROJECT_NAME = project_1
 export SOURCE = vivado_run.tcl
 export WORK   = work
-export DEVICE = xc7z020-clg484-1
+export DEVICE = xcvu095-ffva2104-2-e
 export MODULE = fpga
-export BOARD  = ZED
+export BOARD  = BOARD_VCU108
 export RIGOR  = 1
 BFM_AXI=${CONFMC_HOME}/hwlib/trx_axi
-ifeq ("$(wildcard ${BFM_AXI}/syn/vivado.z7/bfm_axi.edif)","")
-     $(warning "${BFM_AXI}/syn/vivado.z7/bfm_axi.edif not found.")
+ifeq ("$(wildcard ${BFM_AXI}/syn/vivado.vus/bfm_axi.edif)","")
+     $(warning "${BFM_AXI}/syn/vivado.vus/bfm_axi.edif not found.")
      ifeq ("$(wildcard ${BFM_AXI}/syn/vivado/bfm_axi.edif)","")
           $(error "${BFM_AXI}/syn/vivado/bfm_axi.edif not found.")
      else
           export DIR_BFM_EDIF=${BFM_AXI}/syn/vivado
      endif
 else
-     export DIR_BFM_EDIF=${BFM_AXI}/syn/vivado.z7
+     export DIR_BFM_EDIF=${BFM_AXI}/syn/vivado.vus
 endif
 
 FLOG	= $(MODULE)

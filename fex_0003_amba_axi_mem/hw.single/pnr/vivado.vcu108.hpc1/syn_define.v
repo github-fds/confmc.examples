@@ -3,14 +3,17 @@
 
 `undef  SIM
 `define SYN
+
 //-----------------------------------------------------------------------
 `define XILINX
 //-----------------------------------------------------------------------
 // define board type: ML605, ZC706, SP605, VCU108
-`undef   BOARD_SP605
-`define  BOARD_ML605
-`undef   BOARD_VCU108
-`undef   BOARD_ZC706
+`undef  BOARD_SP605
+`undef  BOARD_ML605
+`define BOARD_VCU108
+`undef  BOARD_ZC706
+`undef  BOARD_ZC702
+`undef  BOARD_ZED
 
 `ifdef  BOARD_ML605
 `define FPGA_FAMILY     "VIRTEX6"
@@ -24,6 +27,12 @@
 `elsif  BOARD_ZC706
 `define FPGA_FAMILY     "ZYNQ7000"
 `define VIVADO
+`elsif  BOARD_ZC702
+`define FPGA_FAMILY     "ZYNQ7000"
+`define VIVADO
+`elsif  BOARD_ZED
+`define FPGA_FAMILY     "ZYNQ7000"
+`define VIVADO
 `else
 `define FPGA_FAMILY     "ARTIX7"
 `define ISE
@@ -31,13 +40,5 @@
 
 //-----------------------------------------------------------------------
 `define AMBA_AXI4
-//-----------------------------------------------------------------------
-`define SL_PCLK_FREQ      80_000_000
-`define USR_CLK_FREQ      80_000_000
-`define PCLK_INV         1'b1
-`define DEPTH_FIFO_CU2F  512 // 64
-`define DEPTH_FIFO_DU2F  512 // 1024
-`define DEPTH_FIFO_DF2U  512 // 1024
-`define MEM_SIZE        (8*1024)
 //-----------------------------------------------------------------------
 `endif

@@ -10,19 +10,19 @@ if {[info exists env(CONFMC_HOME)] == 0} {
      set CONFMC_HOME $::env(CONFMC_HOME)
 }
 if {[info exists env(DEVICE)] == 0} { 
-     set DEVICE xc7z020-clg484-1
+     set DEVICE xcvu095-ffva2104-2-e
 } else {
      set DEVICE $::env(DEVICE)
 }
 if {[info exists env(FPGA_TYPE)] == 0} {
-     set FPGA_TYPE  ZYNQ7000
-     set DEVICE     xc7z020-clg484-1
-     set BOARD_TYPE BOARD_ZED
+     set FPGA_TYPE  VirtexUS
+     set DEVICE     xcvu095-ffva2104-2-e
+     set BOARD_TYPE BOARD_VCU108
 } else {
      set FPGA_TYPE $::env(FPGA_TYPE)
-     if {${FPGA_TYPE}=="ZYNQ7000"} {
-          set DEVICE     xc7z020-clg484-1
-          set BOARD_TYPE BOARD_ZED
+     if {${FPGA_TYPE}=="VirtexUS"} {
+          set DEVICE     xcvu095-ffva2104-2-e
+          set BOARD_TYPE BOARD_VCU108
      } else {
           puts "${FPGA_TYPE} not supported"
           exit 1
@@ -61,19 +61,20 @@ set rigor   ${RIGOR}
 #proc proc_read { {out_dir ${WORK}} {part ${DEVICE}} {module ${MODULE}} { rigor 0 } } {
      set DIR_RTL        "../../design/verilog"
      set DIR_BFM        "${CONFMC_HOME}/hwlib/trx_axi"
+     set DIR_DUT        "../../../hw.single/design/verilog"
      set DIR_MEM        "../../../iplib/mem_axi"
-     set DIR_MEM_BRAM   "../../../iplib/mem_axi/bram_simple_dual_port/z7/${VIVADO_VER}"
-     set DIR_XDC        "xdc"
+     set DIR_MEM_BRAM   "../../../iplib/mem_axi/bram_simple_dual_port/vus/${VIVADO_VER}"
+     set DIR_XDC        "../vivado.vcu108.hpc0/xdc"
 
      read_ip "
          ${DIR_MEM_BRAM}/bram_simple_dual_port_32x8KB/bram_simple_dual_port_32x8KB.xci
          ${DIR_MEM_BRAM}/bram_simple_dual_port_32x16KB/bram_simple_dual_port_32x16KB.xci
          ${DIR_MEM_BRAM}/bram_simple_dual_port_32x32KB/bram_simple_dual_port_32x32KB.xci
+         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x64KB/bram_simple_dual_port_32x64KB.xci
+         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x128KB/bram_simple_dual_port_32x128KB.xci
+         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x256KB/bram_simple_dual_port_32x256KB.xci
+         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x512KB/bram_simple_dual_port_32x512KB.xci
      "
-#         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x64KB/bram_simple_dual_port_32x64KB.xci
-#         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x128KB/bram_simple_dual_port_32x128KB.xci
-#         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x256KB/bram_simple_dual_port_32x256KB.xci
-#         ${DIR_MEM_BRAM}/bram_simple_dual_port_32x512KB/bram_simple_dual_port_32x512KB.xci
 
      read_edif "
          $::env(DIR_BFM_EDIF)/bfm_axi.edif
@@ -82,6 +83,7 @@ set rigor   ${RIGOR}
      set_property verilog_dir "
                 ${DIR_RTL}
                 ${DIR_BFM}/rtl/verilog
+                ${DIR_DUT}
                 ${DIR_MEM}/rtl/verilog
                 ${DIR_MEM_BRAM}
      " [current_fileset]
@@ -95,8 +97,8 @@ set rigor   ${RIGOR}
 
      read_xdc "
          ${DIR_XDC}/fpga_etc.xdc
-         ${DIR_XDC}/fpga_zed.xdc
-         ${DIR_XDC}/con-fmc_lpc_zed.xdc
+         ${DIR_XDC}/fpga_vcu108.xdc
+         ${DIR_XDC}/con-fmc_hpc1_vcu108.xdc
      "
 
 #     return 0
@@ -110,7 +112,7 @@ set rigor   ${RIGOR}
                   -verilog_define SYN=1\
                   -verilog_define VIVADO=1\
                   -verilog_define ${FPGA_TYPE}=1\
-                  -verilog_define AMBA_AXI4=1
+                  -verilog_define DEPTH_FIFO=16384
      write_edif -force ${module}.edn
      write_checkpoint -force ${out_dir}/post_synth
      if { ${rigor} == 1} {

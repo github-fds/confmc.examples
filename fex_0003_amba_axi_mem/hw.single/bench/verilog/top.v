@@ -38,17 +38,17 @@
 module top;
    //---------------------------------------------------------------------------
    // Oscillators
-   `ifdef ML605
+   `ifdef BOARD_ML605
    localparam real CLOCK_FREQ =66_000_000.0;
-   `elsif SP605
+   `elsif BOARD_SP605
    localparam real CLOCK_FREQ =27_000_000.0;
-   `elsif ZC706
+   `elsif BOARD_ZC706
    localparam real CLOCK_FREQ =156_250_000.0;
-   `elsif ZC702
+   `elsif BOARD_ZC702
    localparam real CLOCK_FREQ =156_250_000.0;
-   `elsif ZED
+   `elsif BOARD_ZED
    localparam real CLOCK_FREQ =100_000_000.0;
-   `elsif VCU108
+   `elsif BOARD_VCU108
    localparam real CLOCK_FREQ =125_000_000.0;
    `else
    localparam real CLOCK_FREQ =50_000_000.0;
@@ -97,16 +97,16 @@ module top;
          ,.PCLK_INV    (`PCLK_INV    )) // SL_PCLK=~SYS_CLK when 1
    u_fpga (
           .USER_RST_SW     ( USER_RST_SW )
-        `ifdef VCU108
+        `ifdef BOARD_VCU108
         , .USER_CLK_IN_P   ( osc_clk_p   )
         , .USER_CLK_IN_N   ( osc_clk_n   )
-        `elsif ZC706
+        `elsif BOARD_ZC706
         , .USER_CLK_IN_P   ( osc_clk_p   )
         , .USER_CLK_IN_N   ( osc_clk_n   )
-        `elsif ZC702
+        `elsif BOARD_ZC702
         , .USER_CLK_IN_P   ( osc_clk_p   )
         , .USER_CLK_IN_N   ( osc_clk_n   )
-        `elsif ZED
+        `elsif BOARD_ZED
         , .USER_CLK_IN     ( osc_clk     )
         `else
         , .USER_CLK_IN     ( osc_clk     )
@@ -166,6 +166,7 @@ module top;
         $dumpvars(1);
         $dumpvars(3, u_slv);
         $dumpvars(1, u_fpga);
+      //$dumpvars(1, u_fpga.u_clkmgr);
         $dumpvars(4, u_fpga.u_dut);
     end
     `endif
