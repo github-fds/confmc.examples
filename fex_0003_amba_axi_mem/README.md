@@ -221,6 +221,8 @@ This example uses the FMC connector on Avnet ZedBoard.
 
 <details><summary>Click to expand</summary>
 
+### 6.1.1 Linux
+
   1. make sure all connections are ready
      * board power turned off
      * connect USB-to-JTAG to the host computer
@@ -269,6 +271,50 @@ This example uses the FMC connector on Avnet ZedBoard.
         * '-v 3' level of verbosity
      3. now follow on-screen instruction
 
+#### 6.1.2 Windows Visual Studio
+
+  1. make sure all connections are ready
+     * board power turned off
+     * connect USB-to-JTAG to the host computer
+     * connect CON-FMC to the host computer
+     * board power turned on
+     * check CON-FMC is detected as follows
+       ![DeviceManager](./doc/images/DeviceManager.png "DeviceManager")
+  2. program FPGA<a name="program-vivado"></a>
+     This step requires Xilinx Vivado package. Refer to [environment](#environment).
+     1. go to 'hw.single/pnr/vivado.zed.lpc'
+     2. download 'fpga.bit' using Vivado HW Manager
+     3. make sure that the configuration down LED lit.
+  3. compile C program
+     1. set 'CONFMC_HOME' environment variable indicating where CON-FMC package is installed<br>
+        E.g., C:\confmc\2019.05<br>
+     2. got to 'sw.native/test_mem/Project1'
+     2. invoke Visual Studio
+     3. make sure that 'Project1.exe' program is ready without any errors.<br>
+        one of followings should be ready depending on your setting<br>
+        ```
+        Project1\Project1\Debug\Project1.exe
+        Project1\Project1\Release\Project1.exe
+        Project1\Project1\x64\Debug\Project1.exe
+        Project1\Project1\x64\Release\Project1.exe
+        ```
+  4. run the program
+     This step requires CON-FMC SW pkg. Refer to [environment](#environment).<br>
+     You may need Windows Command Window to run the program.
+     1. run 'Project1.exe' with '-h' option to see options
+        ```
+        > Project1.exe -h
+        ```
+     2. run 'Project1.exe'
+        ```
+        > Project1.exe -c 0 -m 0:0x8000 -l 2 -v 3
+        ```
+        * '-c 0' should reflect CON-FMC CID.
+        * '-m 0:0x8000' indicates memory testing from 0x0 to 0x0+0x8000 upward.
+        * '-l 2' level of memory test
+        * '-v 3' level of verbosity
+     3. now follow on-screen instruction
+
 </details>
 
 ### 6.2 ISE case
@@ -279,6 +325,8 @@ CON-FMC can be mounted on any FMC and this example uses LPC.
 ![Setup](./doc/images/amba_axi_mem_setup_ml605.png "Setup ML605")
 
 <details><summary>Click to expand</summary>
+
+### 6.2.1 Linux
 
   1. make sure all connections are ready
      * board power turned off
@@ -327,6 +375,9 @@ CON-FMC can be mounted on any FMC and this example uses LPC.
         * '-l 7' level of memory test
         * '-v 3' level of verbosity
      3. now follow on-screen instruction
+
+#### 6.2.2 Windows Visual Studio
+Refer to '6.1.2 Windows Visual Studio'.
 
 </details>
 
