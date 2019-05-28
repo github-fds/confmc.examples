@@ -59,7 +59,7 @@ ifeq ($(findstring Linux,$(ARCH)),Linux)
     LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi -lusb-1.0
 else ifeq ($(findstring MINGW,$(ARCH)),MINGW)
     CC=gcc
-    DIR_LIBUSB=$(CONFMC_HOME)/lib/libusb-1.0
+    DIR_LIBUSB=$(CONFMC_HOME)/libusb-1.0.22.win
     DEFINES+=-DCOMPAT_MINGW_MS_VSNPRINTF -DBUILDING_STATIC
     CFLAGS+=-I$(CONFMC_HOME)/include -I$(DIR_LIBUSB)/include
     ifeq ($(MACHINE),x86_64)
@@ -75,7 +75,7 @@ else ifeq ($(findstring CYGWIN,$(ARCH)),CYGWIN)
     else
         CC=$(MACHINE)-w32-mingw32-gcc
     endif
-    DIR_LIBUSB=$(CONFMC_HOME)/lib/libusb-1.0
+    DIR_LIBUSB=$(CONFMC_HOME)/libusb-1.0.22.win
     DEFINES+=
     CFLAGS+=-I$(CONFMC_HOME)/include -I$(DIR_LIBUSB)/include
     ifeq ($(MACHINE),x86_64)

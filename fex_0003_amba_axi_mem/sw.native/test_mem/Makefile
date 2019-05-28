@@ -1,7 +1,7 @@
 SHELL=/bin/sh
 
-TARGET?=test
-CID?=0
+TARGET ?= test
+CID    ?= 0
 
 SRC     =\
         main.c\
@@ -12,7 +12,7 @@ SRC     =\
 
 all: pre $(TARGET)
 
-run: $(TARGET)
+run:
 #	./$(TARGET) -c $(CID) -m 0:0x2000 -l 7 -v 3
 #	./$(TARGET) -c $(CID) -m 0:0x2000 -l 7 -v 3
 	./$(TARGET) -c $(CID) -m 0:0x2000 -l 1 -v 3

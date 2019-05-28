@@ -15,6 +15,18 @@
 #ifdef WIN32
 #	include <windows.h>
 #endif
+#ifdef _MSC_VER
+#pragma comment(lib, "legacy_stdio_definitions.lib")
+#if (_MSC_VER >= 1900 )
+//extern "C" {
+FILE _iob[3];
+FILE * __cdecl __iob_func(void) {
+   FILE _iob[3] = { *stdin, *stdout, *stderr };
+   return _iob;
+}
+//}
+#endif
+#endif
 #include "conapi.h"
 
 extern void sig_handle(int);
@@ -27,7 +39,7 @@ con_Handle_t handle=NULL;
 int main(int argc, char *argv[]) {
 
   if ((signal(SIGINT, sig_handle)==SIG_ERR)
-       #ifndef WIN32
+       #if !defined(WIN32)&&!defined(_MSC_VER)
 	  ||(signal(SIGQUIT, sig_handle)==SIG_ERR)
        #endif
 	  ) {

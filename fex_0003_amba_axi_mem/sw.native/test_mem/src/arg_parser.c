@@ -99,7 +99,7 @@ void sig_handle(int sig) {
   extern void cleanup();
   switch (sig) {
   case SIGINT:
-  #ifndef WIN32
+  #if !defined(WIN32)&&!defined(_MSC_VER)
   case SIGQUIT:
   #endif
        cleanup();

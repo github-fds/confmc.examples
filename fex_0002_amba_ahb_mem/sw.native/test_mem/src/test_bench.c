@@ -20,7 +20,6 @@ void test_bench( void )
    printf("test_bench()\n"); fflush(stdout);
 
    unsigned int n, m;
-   char c;
    printf("Enter number to test (0 for infinite loop): "); fflush(stdout);
    scanf("%d", &n);
 
