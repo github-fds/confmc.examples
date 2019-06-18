@@ -1,5 +1,5 @@
 #
-set terminal x11
+#set terminal x11
 #set terminal postscript eps color "Times-Roman"
 #set terminal postscript eps "Times-Roman"
 #set output "cps.eps"

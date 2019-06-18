@@ -10,10 +10,14 @@
 #include <string.h>
 #include <signal.h>
 #include <ctype.h>
-#include <getopt.h>
 #include <assert.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#if defined(_MSC_VER)
+#include "my_getopt.h"
+#else
+#include <getopt.h>
+#endif
 #ifdef WIN32
 #	include <windows.h>
 #	include <io.h>
@@ -43,7 +47,6 @@ extern char      file_name_fft_float[];
 int arg_parser(int argc, char **argv)
 {
    int   opt;
-   char *cpt;
    opterr = 0; // in order to use '?'
    optind = 1; // make re-enterant
    extern int help(int argc, char *argv[]);

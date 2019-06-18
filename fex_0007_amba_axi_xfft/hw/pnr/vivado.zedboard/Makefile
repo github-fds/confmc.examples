@@ -89,6 +89,8 @@ cleanup clobber: clean
 	-@/bin/rm -f  $(MODULE).ucf
 	-@/bin/rm -f  $(MODULE).ut
 	-@/bin/rm -f  $(MODULE).tcf
+	-@/bin/rm -f  $(MODULE).edn
+	-@/bin/rm -f  $(MODULE).edif
 	-@/bin/rm -f all.xdc
 	for D in $(DIRS); do\
 		if [ -f $$D/Makefile ] ; then \
@@ -99,10 +101,8 @@ cleanup clobber: clean
 
 cleanupall: cleanup
 	-@/bin/rm -rf $(WORK)
-	-@/bin/rm -rf $(MODULE).edn
-	-@/bin/rm -rf $(MODULE).edif
-	-@/bin/rm -rf $(MODULE).bit
-	-@/bin/rm -rf $(MODULE).ltx
+	-@/bin/rm -f  $(MODULE).bit
+	-@/bin/rm -f  $(MODULE).ltx
 	for D in $(DIRS); do\
 		if [ -f $$D/Makefile ] ; then \
 			echo "make -C $$D -s $@";\

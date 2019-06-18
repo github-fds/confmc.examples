@@ -8,14 +8,22 @@
 //--------------------------------------------------------
 // VERSION = 2019.04.05.
 //--------------------------------------------------------
-#if (defined(_WIN32)||defined(_WIN64))
-   #ifdef BUILDING_DLL
-      #define XFFT_CONFIG_API __declspec(dllexport)
-   #else
-      #define XFFT_CONFIG_API __declspec(dllimport)
-   #endif
-#else
+#if defined(_MSC_VER)
    #define XFFT_CONFIG_API
+#else
+   #if (defined(_WIN32)||defined(_WIN64))
+      #ifdef BUILDING_DLL
+         #define XFFT_CONFIG_API __declspec(dllexport)
+      #else
+         #ifdef BUILDING_STATIC
+             #define XFFT_CONFIG_API
+         #else
+             #define XFFT_CONFIG_API __declspec(dllimport)
+         #endif
+      #endif
+   #else
+      #define XFFT_CONFIG_API
+   #endif
 #endif
 
 #ifdef __cplusplus

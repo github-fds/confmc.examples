@@ -1,7 +1,7 @@
 `ifndef CLKMGRA_V
 `define CLKMGRA_V
 //------------------------------------------------------------------------------
-// Copyright (c) 2018 by Future Design Systems Co., Ltd.
+// Copyright (c) 2018-2019 by Future Design Systems
 // All right reserved.
 //------------------------------------------------------------------------------
 `timescale 1ns/1ps
@@ -92,7 +92,8 @@ begin: VIRTEX6_CLKMGRA
     );
 end
 //------------------------------------------------------------------------------
-else if ((FPGA_FAMILY=="VIRTEX7")||(FPGA_FAMILY=="ARTIX7 "))
+else if ((FPGA_FAMILY=="VIRTEX7")||
+         (FPGA_FAMILY=="ARTIX7 "))
 begin: VIRTEX_CLKMGRA 
     wire SYS_CLK_CLKFB   ;
     wire SYS_CLK_CLKOUT0 ;
@@ -326,7 +327,10 @@ end else if (FPGA_FAMILY=="ZYNQ7000") begin: ZYNQ_CLKMGRA
     // synthesis translate_on
 end
 //------------------------------------------------------------------------------
-else if (FPGA_FAMILY=="VirtexUS" )
+else if ((FPGA_FAMILY=="VirtexUS" )||
+         (FPGA_FAMILY=="VirtexUSP")||
+         (FPGA_FAMILY=="ZynqUSP"  ))
+
 begin: XCVU_CLKMGRA 
     wire SYS_CLK_CLKFB   ;
     wire SYS_CLK_CLKOUT0 ;
@@ -530,8 +534,9 @@ endgenerate
 endmodule
 
 //------------------------------------------------------------------------------
-//Revision History:
+// Revision History:
 //
+// 2019.06.10: 'ZynqUSP' block added
 // 2018.06.12: 'VIRTEX6_CLKMGRA' block added for Virtex-6
 // 2018.06.06: Parameter check added by Ando Ki.
 // 2018.03.12: Started by Ando Ki (adki@future-ds.com)

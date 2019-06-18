@@ -1,6 +1,6 @@
 #---------------------------------------------------------
 if {[info exists env(VIVADO_VER)] == 0} {
-     set VIVADO_VER vivado.2017.4
+     set VIVADO_VER vivado.2018.3
 } else {
      set VIVADO_VER $::env(VIVADO_VER)
 }

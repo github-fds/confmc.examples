@@ -12,14 +12,22 @@
 //--------------------------------------------------------------------
 #include <stdint.h>
 
-#if (defined(_WIN32)||defined(_WIN64))
-   #ifdef BUILDING_DLL
-      #define AXI_MEM2STREAM_API __declspec(dllexport)
-   #else
-      #define AXI_MEM2STREAM_API __declspec(dllimport)
-   #endif
-#else
+#if defined(_MSC_VER)
    #define AXI_MEM2STREAM_API
+#else
+   #if (defined(_WIN32)||defined(_WIN64))
+      #ifdef BUILDING_DLL
+         #define AXI_MEM2STREAM_API __declspec(dllexport)
+      #else
+         #ifdef BUILDING_STATIC
+             #define AXI_MEM2STREAM_API
+         #else
+             #define AXI_MEM2STREAM_API __declspec(dllimport)
+         #endif
+      #endif
+   #else
+      #define AXI_MEM2STREAM_API
+   #endif
 #endif
 
 #ifdef __cplusplus

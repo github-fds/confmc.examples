@@ -17,20 +17,25 @@
 // 2018.02.05: Started by Ando Ki.
 //------------------------------------------------------
 `ifdef BOARD_VCU108
-    wire USER_CLK_IN;
-    IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (USER_CLK_IN_P)
-                                              ,.IB (USER_CLK_IN_N)
-                                              ,.O  (USER_CLK_IN));
+    wire BOARD_CLK_IN;
+    IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (BOARD_CLK_IN_P)
+                                              ,.IB (BOARD_CLK_IN_N)
+                                              ,.O  (BOARD_CLK_IN));
 `elsif BOARD_ZC706
-    wire USER_CLK_IN;
-    IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (USER_CLK_IN_P)
-                                              ,.IB (USER_CLK_IN_N)
-                                              ,.O  (USER_CLK_IN));
+    wire BOARD_CLK_IN;
+    IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (BOARD_CLK_IN_P)
+                                              ,.IB (BOARD_CLK_IN_N)
+                                              ,.O  (BOARD_CLK_IN));
 `elsif BOARD_ZC702
-    wire USER_CLK_IN;
-    IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (USER_CLK_IN_P)
-                                              ,.IB (USER_CLK_IN_N)
-                                              ,.O  (USER_CLK_IN));
+    wire BOARD_CLK_IN;
+    IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (BOARD_CLK_IN_P)
+                                              ,.IB (BOARD_CLK_IN_N)
+                                              ,.O  (BOARD_CLK_IN));
+`elsif BOARD_ZCU111
+    wire BOARD_CLK_IN;
+    IBUFGDS #(.DIFF_TERM("TRUE")) u_sys_clk_ds(.I  (BOARD_CLK_IN_P)
+                                              ,.IB (BOARD_CLK_IN_N)
+                                              ,.O  (BOARD_CLK_IN));
 `else
 `endif
 

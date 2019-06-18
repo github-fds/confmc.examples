@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------
 +incdir+$CONFMC_HOME/hwlib/gpif2mst/rtl/verilog
 +incdir+$CONFMC_HOME/hwlib/trx_axi/rtl/verilog
-        $CONFMC_HOME/hwlib/trx_axi/rtl/verilog/bfm_axi_ise.vp
+        $CONFMC_HOME/hwlib/trx_axi/rtl/verilog/bfm_axi_modelsim_ise.vp
 //--------------------------------------------------------------------
 //+incdir+../../../iplib/mem_axi/rtl/verilog
 //        ../../../iplib/mem_axi/rtl/verilog/mem_axi.v

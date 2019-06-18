@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------------
 //`define SIM      // define this for simulation case if you are not sure
 `undef  SYN      // undefine this for simulation case
-//`define VCD      // define this for VCD waveform dump
+`define VCD      // define this for VCD waveform dump
 `define DEBUG
 `define RIGOR
 //-----------------------------------------------------------------------
@@ -12,10 +12,11 @@
 // define board type: ML605, ZC706, SP605, VCU108
 `undef  BOARD_SP605
 `undef  BOARD_ML605
-`define BOARD_VCU108
+`undef  BOARD_VCU108
 `undef  BOARD_ZC706
 `undef  BOARD_ZC702
-`undef  BOARD_ZED
+`define BOARD_ZED
+`undef  BOARD_ZCU111
 
 `ifdef  BOARD_ML605
 `define FPGA_FAMILY     "VIRTEX6"
@@ -34,6 +35,9 @@
 `define VIVADO
 `elsif  BOARD_ZED
 `define FPGA_FAMILY     "ZYNQ7000"
+`define VIVADO
+`elsif  BOARD_ZCU111
+`define FPGA_FAMILY     "ZynqUSP"
 `define VIVADO
 `else
 `define FPGA_FAMILY     "ARTIX7"

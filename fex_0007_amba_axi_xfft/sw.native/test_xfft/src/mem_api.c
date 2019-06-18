@@ -41,6 +41,7 @@ int write_burst( unsigned int  addr // starting address
                , unsigned int  length ) // burst length
 {
     MEM_WRITE_G(addr, buff, size, length);
+    return 0;
 }
 int read_burst( unsigned int  addr // starting address
               , unsigned int *buff // data
@@ -48,6 +49,7 @@ int read_burst( unsigned int  addr // starting address
               , unsigned int  length ) // burst length
 {
     MEM_READ_G(addr, buff, size, length);
+    return 0;
 }
 
 void

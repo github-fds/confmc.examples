@@ -6,11 +6,12 @@
 //------------------------------------------------------------------------------
 // VERSION = 2018.04.27.
 //------------------------------------------------------------------------------
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdint.h>
-#include <math.h>
+#include <string.h>
 
 extern long long sampling_freq;
 extern int       num_of_samples; // num of samples
@@ -36,7 +37,7 @@ static unsigned int bit_reverse(unsigned int numbits, unsigned int index)
 void bit_reverse_swap(int num, double dataR[], double dataI[])
 {
    int numbits = (int)(log(num)/log(2));
-   for (int n=0; n<num; n++) {
+   for (unsigned int n=0; n<(unsigned int)num; n++) {
         unsigned int result = bit_reverse(numbits, n);
         if (n<result) {
             double tmp = dataR[n];
@@ -124,6 +125,9 @@ void gen_data(int     num_of_samples     // number of samples
   }
 }
 
+#if defined(_MSC_VER)||defined(_WIN32)||defined(_WIN64)
+#include "getline.h"
+#endif
 //------------------------------------------------------------------------------
 void get_data(int num, char file_name[], double dataR[], double dataI[])
 {

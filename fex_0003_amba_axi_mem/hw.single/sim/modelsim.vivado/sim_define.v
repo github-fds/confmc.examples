@@ -12,10 +12,11 @@
 // define board type: ML605, ZC706, SP605, VCU108
 `undef  BOARD_SP605
 `undef  BOARD_ML605
-`define BOARD_VCU108
+`undef  BOARD_VCU108
 `undef  BOARD_ZC706
 `undef  BOARD_ZC702
 `undef  BOARD_ZED
+`define BOARD_ZCU111
 
 `ifdef  BOARD_ML605
 `define FPGA_FAMILY     "VIRTEX6"
@@ -35,6 +36,9 @@
 `elsif  BOARD_ZED
 `define FPGA_FAMILY     "ZYNQ7000"
 `define VIVADO
+`elsif  BOARD_ZCU111
+`define FPGA_FAMILY     "ZynqUSP"
+`define VIVADO
 `else
 `define FPGA_FAMILY     "ARTIX7"
 `define ISE
@@ -52,9 +56,9 @@
 `define AMBA_AXI4
 //-----------------------------------------------------------------------
 // Test case sel
-`define TEST_INFO       1
-`define TEST_GPIN_OUT   1
-`define TEST_SINGLE0    1
+`define TEST_INFO       0
+`define TEST_GPIN_OUT   0
+`define TEST_SINGLE0    0
 `define TEST_BURST1     1
 `define TEST_BURST4     1
 `define TEST_BURST8     1

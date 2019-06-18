@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// Copyright (c) 2019 by Future Design Systems Co., Ltd.
+// Copyright (c) 2019 by Future Design Systems
 // All right reserved
 //
 // http://www.future-ds.com

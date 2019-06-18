@@ -47,20 +47,23 @@ module fpga
                , DEPTH_FIFO_DF2U=`DEPTH_FIFO_DF2U// data stream-out-fifo 4-word unit (FPGA-to-USB)
                , MEM_SIZE=`MEM_SIZE )
 (
-       input   wire          USER_RST_SW // U25 // synthesis xc_pulldown = 1
+       input   wire          BOARD_RST_SW // U25 // synthesis xc_pulldown = 1
 `ifdef BOARD_VCU108
-     , input   wire          USER_CLK_IN_P // reference clock input (125)
-     , input   wire          USER_CLK_IN_N // reference clock input (125)
+     , input   wire          BOARD_CLK_IN_P // reference clock input (125)
+     , input   wire          BOARD_CLK_IN_N // reference clock input (125)
 `elsif BOARD_ZC706
-     , input   wire          USER_CLK_IN_P // reference clock input (156.25)
-     , input   wire          USER_CLK_IN_N // reference clock input (156.25)
+     , input   wire          BOARD_CLK_IN_P // reference clock input (156.25)
+     , input   wire          BOARD_CLK_IN_N // reference clock input (156.25)
 `elsif BOARD_ZC702
-     , input   wire          USER_CLK_IN_P // reference clock input (156.25)
-     , input   wire          USER_CLK_IN_N // reference clock input (156.25)
+     , input   wire          BOARD_CLK_IN_P // reference clock input (156.25)
+     , input   wire          BOARD_CLK_IN_N // reference clock input (156.25)
 `elsif BOARD_ZED
-     , input   wire          USER_CLK_IN // reference clock input (66)
+     , input   wire          BOARD_CLK_IN // reference clock input (66)
+`elsif BOARD_ZCU111
+     , input   wire          BOARD_CLK_IN_P // reference clock input (156.25)
+     , input   wire          BOARD_CLK_IN_N // reference clock input (156.25)
 `else
-     , input   wire          USER_CLK_IN // reference clock input (66)
+     , input   wire          BOARD_CLK_IN // reference clock input (66)
 `endif
      //-------------------------------------------------------------------------
      , input   wire          SL_RST_N      // synthesis xc_pullup = 1
@@ -80,25 +83,28 @@ module fpga
 );
     //--------------------------------------------------------------------------
     `ifdef BOARD_ML605
-    localparam USER_CLK_IN_FREQ=66_000_000;
+    localparam BOARD_CLK_IN_FREQ=66_000_000;
     localparam FPGA_FAMILY="VIRTEX6";
     `elsif BOARD_SP605
-    localparam USER_CLK_IN_FREQ=27_000_000;
+    localparam BOARD_CLK_IN_FREQ=27_000_000;
     localparam FPGA_FAMILY="SPARTAN6";
     `elsif BOARD_ZC706
-    localparam USER_CLK_IN_FREQ=156_250_000;
+    localparam BOARD_CLK_IN_FREQ=156_250_000;
     localparam FPGA_FAMILY="ZYNQ7000"; // Zynq-7000
     `elsif BOARD_ZC702
-    localparam USER_CLK_IN_FREQ=156_250_000;
+    localparam BOARD_CLK_IN_FREQ=156_250_000;
     localparam FPGA_FAMILY="ZYNQ7000"; // Zynq-7000
     `elsif BOARD_ZED
-    localparam USER_CLK_IN_FREQ=100_000_000;
+    localparam BOARD_CLK_IN_FREQ=100_000_000;
     localparam FPGA_FAMILY="ZYNQ7000"; // Zynq-7000
     `elsif BOARD_VCU108
-    localparam USER_CLK_IN_FREQ=125_000_000;
+    localparam BOARD_CLK_IN_FREQ=125_000_000;
     localparam FPGA_FAMILY="VirtexUS";
+    `elsif BOARD_ZCU111
+    localparam BOARD_CLK_IN_FREQ=100_000_000;
+    localparam FPGA_FAMILY="VirtexUSP";
     `else
-    localparam USER_CLK_IN_FREQ=50_000_000;
+    localparam BOARD_CLK_IN_FREQ=50_000_000;
     localparam FPGA_FAMILY="ARTIX7";
     `endif
     //--------------------------------------------------------------------------
@@ -109,7 +115,7 @@ module fpga
     wire SYS_RST_N;
     wire USR_CLK;
     //--------------------------------------------------------------------------
-    clkmgra #(.INPUT_CLOCK_FREQ(USER_CLK_IN_FREQ)
+    clkmgra #(.INPUT_CLOCK_FREQ(BOARD_CLK_IN_FREQ)
              ,.SYSCLK_FREQ     (SL_PCLK_FREQ)
              ,.CLKOUT1_FREQ    (USR_CLK_FREQ) // it does not affect for SPARTAN6
              ,.CLKOUT2_FREQ    ( 25_000_000)
@@ -117,7 +123,7 @@ module fpga
              ,.CLKOUT4_FREQ    (250_000_000)
              ,.FPGA_FAMILY     (FPGA_FAMILY))// ARTIX7, VIRTEX6, SPARTAN6
     u_clkmgr (
-           .OSC_IN         ( USER_CLK_IN      )
+           .OSC_IN         ( BOARD_CLK_IN      )
          , .OSC_OUT        (  )
          , .SYS_CLK_OUT    ( SYS_CLK          )
          , .CLKOUT1        ( USR_CLK          )
@@ -138,7 +144,7 @@ module fpga
            .SYS_CLK_STABLE  ( SYS_CLK_STABLE )
          , .SYS_CLK         ( SYS_CLK        )
          , .SYS_RST_N       ( SYS_RST_N      ) // SL_RST_N&SYS_CLK_STABLE
-         , .SL_RST_N        ( SL_RST_N&~USER_RST_SW)
+         , .SL_RST_N        ( SL_RST_N&~BOARD_RST_SW)
          , .SL_CS_N         ( SL_CS_N        )
          , .SL_PCLK         ( SL_PCLK        )
          , .SL_AD           ( SL_AD          )
@@ -160,10 +166,10 @@ module fpga
     initial begin
          wait (SYS_RST_N==1'b0);
          wait (SYS_RST_N==1'b1);
-         repeat (5) @ (posedge USER_CLK_IN);
-         @ (posedge USER_CLK_IN); stamp_x = $realtime;
-         @ (posedge USER_CLK_IN); stamp_y = $realtime;
-         $display("%m USER_CLK_IN %.2f-nsec %.2f-MHz", stamp_y - stamp_x, 1000.0/(stamp_y-stamp_x));
+         repeat (5) @ (posedge BOARD_CLK_IN);
+         @ (posedge BOARD_CLK_IN); stamp_x = $realtime;
+         @ (posedge BOARD_CLK_IN); stamp_y = $realtime;
+         $display("%m BOARD_CLK_IN %.2f-nsec %.2f-MHz", stamp_y - stamp_x, 1000.0/(stamp_y-stamp_x));
          @ (posedge SL_PCLK); stamp_x = $realtime;
          @ (posedge SL_PCLK); stamp_y = $realtime;
          $display("%m SL_PCLK %.2f-nsec %.2f-MHz", stamp_y - stamp_x, 1000.0/(stamp_y-stamp_x));

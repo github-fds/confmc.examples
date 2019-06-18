@@ -1,5 +1,5 @@
 # CON-FMC with XFFT
-This example runs Xilinx FFT (Fast Fourier Transform) along with Future Design Systems'' CON-FMC.
+This example runs Xilinx FFT (Fast Fourier Transform) along with Future Design Systems' CON-FMC.
 
 ![Overall structure](./doc/images/con-fmc-xfft.png "Overall structure")
 
@@ -33,10 +33,10 @@ This example requires followings.
 
 ### 1.1 CON-FMC
 This example requires CON-FMC software package.
-If CON-FMC SW pkg is installed on */opt/confmc/2018.04*,
+If CON-FMC SW pkg is installed on */opt/confmc/2019.05*,
 then source following script. (The directory should reflect actual one.)
 
-    $ source /opt/confmc/2018.4/setting.sh
+    $ source /opt/confmc/2019.05/setting.sh
 
 ### 1.2 Xilinx
 This example requires Xilinx development package; ISE or Vivado depending on FPGA type.

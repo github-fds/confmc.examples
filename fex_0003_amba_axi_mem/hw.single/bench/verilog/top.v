@@ -50,6 +50,8 @@ module top;
    localparam real CLOCK_FREQ =100_000_000.0;
    `elsif BOARD_VCU108
    localparam real CLOCK_FREQ =125_000_000.0;
+   `elsif BOARD_ZCU111
+   localparam real CLOCK_FREQ =100_000_000.0;
    `else
    localparam real CLOCK_FREQ =50_000_000.0;
    `endif
@@ -61,7 +63,7 @@ module top;
    wire       osc_clk_n =~osc_clk;
    //---------------------------------------------------------------------------
    // User reset
-   reg USER_RST_SW=1'b1; initial #55 USER_RST_SW=1'b0; // active-high
+   reg BOARD_RST_SW=1'b1; initial #55 BOARD_RST_SW=1'b0; // active-high
    //---------------------------------------------------------------------------
    wire         #(3.5) SL_RST_N   ; PULLUP u_rst (SL_RST_N);
    wire         #(3.5) SL_PCLK    ;
@@ -96,20 +98,23 @@ module top;
          ,.USR_CLK_FREQ(`USR_CLK_FREQ)
          ,.PCLK_INV    (`PCLK_INV    )) // SL_PCLK=~SYS_CLK when 1
    u_fpga (
-          .USER_RST_SW     ( USER_RST_SW )
+          .BOARD_RST_SW     ( BOARD_RST_SW )
         `ifdef BOARD_VCU108
-        , .USER_CLK_IN_P   ( osc_clk_p   )
-        , .USER_CLK_IN_N   ( osc_clk_n   )
+        , .BOARD_CLK_IN_P   ( osc_clk_p   )
+        , .BOARD_CLK_IN_N   ( osc_clk_n   )
         `elsif BOARD_ZC706
-        , .USER_CLK_IN_P   ( osc_clk_p   )
-        , .USER_CLK_IN_N   ( osc_clk_n   )
+        , .BOARD_CLK_IN_P   ( osc_clk_p   )
+        , .BOARD_CLK_IN_N   ( osc_clk_n   )
         `elsif BOARD_ZC702
-        , .USER_CLK_IN_P   ( osc_clk_p   )
-        , .USER_CLK_IN_N   ( osc_clk_n   )
+        , .BOARD_CLK_IN_P   ( osc_clk_p   )
+        , .BOARD_CLK_IN_N   ( osc_clk_n   )
         `elsif BOARD_ZED
-        , .USER_CLK_IN     ( osc_clk     )
+        , .BOARD_CLK_IN     ( osc_clk     )
+        `elsif BOARD_ZCU111
+        , .BOARD_CLK_IN_P   ( osc_clk_p   )
+        , .BOARD_CLK_IN_N   ( osc_clk_n   )
         `else
-        , .USER_CLK_IN     ( osc_clk     )
+        , .BOARD_CLK_IN     ( osc_clk     )
         `endif
         , .SL_RST_N        ( SL_RST_N    )
         , .SL_CS_N         ( SL_CS_N     )

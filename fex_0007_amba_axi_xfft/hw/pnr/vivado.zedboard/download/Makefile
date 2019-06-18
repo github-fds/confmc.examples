@@ -14,7 +14,7 @@ MAKEFILE	= Makefile
 # $ make JTAG_ID=2  --> download through JTAG 2
 #------------------------------------------------------------------
 ifndef XILINX_VIVADO
-       $(error XILINX_VIVADO environment variable not defined)
+       $(warning XILINX_VIVADO environment variable not defined)
 endif
 #------------------------------------------------------------------
 ARCH	= $(shell uname)
@@ -38,7 +38,7 @@ else ifeq ($(findstring MINGW32_NT,$(ARCH)),MINGW32_NT)
         PLATFORM= mingw
   endif
 else
-  $(error un-supported platform $(ARCH))
+  $(warning un-supported platform $(ARCH))
 endif
 #------------------------------------------------------------------
 ifneq ("$(wildcard $(XILINX_VIVADO)/bin/vivado)","")
@@ -46,7 +46,7 @@ export VIVADO   = $(XILINX_VIVADO)/bin/vivado
 else ifneq ("$(wildcard $(XILINX_VIVADO)/bin/vivado_lab)","")
 export VIVADO   = $(XILINX_VIVADO)/bin/vivado_lab
 else
-$(error "XILINX_VIVADO not found")
+$(warning "XILINX_VIVADO not found")
 endif
 export SOURCE   = vivado_down.tcl	
 export BITFILE ?= ../fpga.bit

@@ -222,7 +222,8 @@ begin: VIRTEX_CLKMGRA
     end
     // synthesis translate_on
 
-end else if (FPGA_FAMILY=="ZYNQ7000") begin: ZYNQ_CLKMGRA 
+end else if (FPGA_FAMILY=="ZYNQ7000")
+begin: ZYNQ_CLKMGRA 
 
     wire CLKFBOUT;
     wire CLKFBIN=CLKFBOUT;
@@ -325,7 +326,9 @@ end else if (FPGA_FAMILY=="ZYNQ7000") begin: ZYNQ_CLKMGRA
     // synthesis translate_on
 end
 //------------------------------------------------------------------------------
-else if (FPGA_FAMILY=="VirtexUS" )
+else if ((FPGA_FAMILY=="VirtexUS" )||
+         (FPGA_FAMILY=="VirtexUSP")||
+         (FPGA_FAMILY=="ZynqUSP"  ))
 begin: XCVU_CLKMGRA 
     wire SYS_CLK_CLKFB   ;
     wire SYS_CLK_CLKOUT0 ;

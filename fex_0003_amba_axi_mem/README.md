@@ -1,5 +1,5 @@
 # CON-FMC<sup>TM</sup> with AMBA AXI MEM
-This example writes and reads memory in the FPGA through USB along with Future Design Systems'' CON-FMC.
+This example writes and reads memory in the FPGA through USB along with Future Design Systems' CON-FMC.
 
 ![Example structure](./doc/images/amba_axi_mem.png "Example structure")
 

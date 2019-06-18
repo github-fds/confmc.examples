@@ -1,0 +1,7 @@
+# Refer to results by searching ".gitignore templates"
+
+obj
+*.o
+*.exe
+test
+old

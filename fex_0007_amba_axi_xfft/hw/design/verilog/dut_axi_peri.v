@@ -716,6 +716,7 @@
    wire event_data_in_channel_halt;
    wire event_data_out_channel_halt;
    //---------------------------------------------------------------------------
+   // set "CONFIG.xk_index {false}" to remove 'm_axis_data_tuser'
    xfft_16bit256samples
    u_xfft (
          .aclk                       ( AXIS_CLK           )//input         aclk

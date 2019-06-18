@@ -21,7 +21,9 @@
 //extern "C" {
 FILE _iob[3];
 FILE * __cdecl __iob_func(void) {
-   FILE _iob[3] = { *stdin, *stdout, *stderr };
+   _iob[0] = *stdin;
+   _iob[1] = *stdout;
+   _iob[2] = *stderr;
    return _iob;
 }
 //}

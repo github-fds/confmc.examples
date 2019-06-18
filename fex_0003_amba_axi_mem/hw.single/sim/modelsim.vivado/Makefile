@@ -73,7 +73,8 @@ unexport PLIOBJS
 DEFINES+=
 #--------------------------------------------------------
 WORK	= unisims_ver
-export FPGA_TYPE=z7
+#export FPGA_TYPE=z7
+export FPGA_TYPE=zusp
 export VIVADO=vivado.$(VIVADO_VERSION)
 #--------------------------------------------------------
 TOP	= top

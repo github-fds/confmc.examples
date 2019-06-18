@@ -7,7 +7,8 @@ ifndef CONFMC_HOME
 endif
 
 VIVADO_VERSION = $(shell vivado -version | sed -n 1p | cut -d" " -f 2 | cut -c 2-)
-export FPGA_TYPE=z7
+#export FPGA_TYPE=z7
+export FPGA_TYPE=zusp
 export VIVADO=vivado.$(VIVADO_VERSION)
 
 all: elab sim

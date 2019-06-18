@@ -4,7 +4,7 @@ ARCH=$(shell uname)
 TARGET=test
 
 ARCH=$(shell uname -s)
-ifeq ($(findstring MINGW32,$(ARCH)),MINGW32)
+ifeq ($(findstring MINGW,$(ARCH)),MINGW)
       PLATFORM=mingw
 else ifeq ($(findstring CYGWIN,$(ARCH)),CYGWIN)
       PLATFORM=cygwin
@@ -40,9 +40,9 @@ ifndef CONFMC_HOME
          export CPLUS_INCLUDE_PATH=$(CONFMC_HOME)/include
        endif
        ifdef PYTHONPATH
-         export PYTHONPATH=$(CONFMC_HOME)/conapi/python:$(CONFMC_HOME)/hwlib/trx_axi/api/python:$(shell printenv PYTHONPATH)
+         export PYTHONPATH=$(CONFMC_HOME)/python:$(CONFMC_HOME)/hwlib/trx_axi/api/python:$(shell printenv PYTHONPATH)
        else
-         export PYTHONPATH=$(CONFMC_HOME)/conapi/python:$(CONFMC_HOME)/hwlib/trx_axi/api/python
+         export PYTHONPATH=$(CONFMC_HOME)/python:$(CONFMC_HOME)/hwlib/trx_axi/api/python
        endif
 endif
 DEFINES=-g
@@ -56,15 +56,15 @@ ifeq ($(findstring Linux,$(ARCH)),Linux)
     LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi -lusb-1.0
 else ifeq ($(findstring MINGW,$(ARCH)),MINGW)
     CC=gcc
-    DIR_LIBUSB=$(CONFMC_HOME)/conapi/libusb-1.0.22.win
-    DEFINES+=-DCOMPAT_MINGW_MS_VSNPRINTF
+    DIR_LIBUSB=$(CONFMC_HOME)/libusb-1.0.22.win
+    DEFINES+=-DCOMPAT_MINGW_MS_VSNPRINTF -DBUILDING_STATIC
     CFLAGS+=-I$(CONFMC_HOME)/include -I$(DIR_LIBUSB)/include
     ifeq ($(MACHINE),x86_64)
-    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
-             -L$(DIR_LIBUSB)/MinGW64/static -lusb-1.0
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -Wl,-Bstatic -lconapi\
+             -L$(DIR_LIBUSB)/MinGW64/static -Wl,-Bstatic -lusb-1.0
     else
-    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
-             -L$(DIR_LIBUSB)/MinGW32/static -lusb-1.0
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -Wl,-Bstatic -lconapi\
+             -L$(DIR_LIBUSB)/MinGW32/static -Wl,-Bstatic -lusb-1.0
     endif
 else ifeq ($(findstring CYGWIN,$(ARCH)),CYGWIN)
     ifeq ($(MACHINE),x86_64)
@@ -72,15 +72,15 @@ else ifeq ($(findstring CYGWIN,$(ARCH)),CYGWIN)
     else
         CC=$(MACHINE)-w32-mingw32-gcc
     endif
-    DIR_LIBUSB=$(CONFMC_HOME)/conapi/libusb-1.0.22.win
+    DIR_LIBUSB=$(CONFMC_HOME)/libusb-1.0.22.win
     DEFINES+=
     CFLAGS+=-I$(CONFMC_HOME)/include -I$(DIR_LIBUSB)/include
     ifeq ($(MACHINE),x86_64)
-    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -Wl,-Bstatic -lconapi\
              -L$(DIR_LIBUSB)/MinGW64/static -lusb-1.0
     else
-    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -lconapi\
-             -L$(DIR_LIBUSB)/MinGW32/static -lusb-1.0
+    LDFLAGS+=-L$(CONFMC_HOME)/lib/$(PLATFORM)_$(MACHINE) -Wl,-Bstatic -lconapi\
+             -L$(DIR_LIBUSB)/MinGW32/static -Wl,-Bstatic -lusb-1.0
     endif
 endif
 
