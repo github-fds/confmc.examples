@@ -1,0 +1,4 @@
+verilog work ./syn_define.v
+verilog work ../../design/verilog/fpga.v
+verilog work ../../../iplib/aes128_axi/rtl/verilog/aes128_axi_stub.v
+#verilog work /home/adki/work/projects/ez-usb-fx3/hwlib/trx_axi/rtl/verilog/bfm_axi_stub.v

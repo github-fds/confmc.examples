@@ -1,0 +1,43 @@
+`pragma protect begin_protected
+`pragma protect version = 2
+`pragma protect encrypt_agent = "XILINX"
+`pragma protect encrypt_agent_info = "Xilinx Encryption Tool 2015"
+`pragma protect begin_commonblock
+`pragma protect control error_handling = "delegated"
+`pragma protect control decryption=(activity==simulation) ? "true" : "true"
+`pragma protect end_commonblock
+`pragma protect begin_toolblock
+`pragma protect rights_digest_method="sha256"
+`pragma protect key_keyowner = "Xilinx", key_keyname= "xilinxt_2017_05", key_method = "rsa", key_block
+BEVzoz060gYpZHfVO4DOo5WhgONDM/NBDNgVcC/6XbBi7Fs93B0aFB2MrraV/fYB1LWF4FN3TOmD
+N698nyoH+3NK58dHX9J0o/P/uw4X7BrV/Fk7O6LObWGXpNNeoTXWzEXshaov5KGcS3M1ellL2kFl
+FFp24IzLiCl0b78+bFX46r0pKkJyuifHQFQWmWCmT3ubyIqS8lz4jfqYWLQBCww5Ol0YSWqOc7Xo
+g9rs2+G2ThWud8p1KxfCg422O2KeBjrHm2Yy/5y3TWJTjnPtb1LEtOLBGwSWNyGXSP7TUkb85Mf8
+0f8HfIg1qlOlDrFdbe9srdyGRJxNCy9RXq6uzg==
+
+`pragma protect control xilinx_configuration_visible = "true"
+`pragma protect control xilinx_enable_modification = "true"
+`pragma protect control xilinx_enable_probing = "true"
+`pragma protect control xilinx_enable_netlist_export = "true"
+`pragma protect control xilinx_enable_bitstream = "true"
+`pragma protect control decryption=(xilinx_activity==simulation) ? "true" : "true"
+`pragma protect end_toolblock="Uqoqj6+fjp6Z8nKyzlLbrpI0wWCp0cRYuO1KasQe1Zs="
+`pragma protect data_method = "AES128-CBC"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 816)
+`pragma protect data_block
+X6J4xHKe+gCmcyUkib5aT/v8kZNFMLeweWwIc1U/l2gAm5sX3JtwMWnngg0cPui+sT72Ucm9ASd/
+xd3ca0fW1c2mAnmNNKrpEYWousziT2m31BEremK2i0c+EDqn/W/0pyt0xrToHMJ6MQfdE+ykdkIZ
+Udk0FiODmk7N4CcPY7q15oSToA6q8q1O2kC8Rd5y3+jJbEg+vgxVVVw8YBoH+HJhpdExooZBXkYP
+JntUS7r5eDKc9mEOwnvpa6PWfS92/P/GwmxMo/C+DYqxtWwZz5HqS8L6Y1gPOVa4O3HlOXz8KXNO
+OYRRWDCgUb8Vl3UwJlHeJz28emaC4oHa28Km4hx3mtv/lKKdPEwtYGwvFuJaIhkN9FT4LWfOMmSi
+dB7xkd2pPR51+QAV+iXaHvh4VQ/8cRoJGBUJcd8KyEVZWYYg4lwbDF8E5x7t1t1jQ7fdo2jP9HZ4
+xwdJaAZL9liNq1qfIE7Q9M0iKgeD2UR8TRFOzgMYvh2Rn8uI/z7cQx4bwkNt3SDUrgltqHYxMQ8Y
+gbp7GYDYT9yvwGnISp/+08+O8SRtTYhqyT/wXEdMIt6PQYDEaQCJZVJzZEPv+DlRmENxWh/4wN+B
+0Ri8bsqs2rFrNUZxGOFXwkb6gRLAnvP/jZXjUT9a0kDLS0UN69ThmKSqlrGNKNAQzUvIJTXv6/fD
+LuzEWcW9uPpiDxg++L4Uiv5ZNjhYHk703pdIsFNvf1OC6V9rxzLasUJ2BRKW5TxBg6iuEdANonsj
+H4QoVoqvSIYGFpmlGvlknqdygx5Gj2NG+3r3DWN+76U9ew/X4lHKWKcsHxqfpXZK3zyODlmgFDSF
+OFCS2lZh6RHX2K4rqqxRtxXQ8X1IPg/KXTfhgzviA91lq4ghgGg21WioRFc0yORZyRIwy6dCZApC
+TaL0wXiNK2EK/jlV1VKY8dOt+9M4As3JkilD7cqLPpMYb0Ce0h2KcHIP7fBReIYn2ReOVHi5G4em
+nmq6B/KSbTOfk9g2acIEquMDngSk8Nq0Ut8+QCUxJCerCVGtmv42PUUj+IdC+W8QYhpbndM5WJ2d
+SWSmDmEkdlMyrGq7pE9BWikf
+`pragma protect end_protected

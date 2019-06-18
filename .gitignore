@@ -3,7 +3,7 @@
 fex_0001_loopback
 fex_0004_amba_axis
 fex_0005_amba_ahb_sha256
-fex_0006_amba_axi_aes
+#fex_0006_amba_axi_aes
 fex_0007_xfft.sav
 
 doc/old

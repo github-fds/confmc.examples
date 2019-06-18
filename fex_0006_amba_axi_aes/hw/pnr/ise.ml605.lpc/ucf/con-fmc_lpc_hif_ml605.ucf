@@ -1,0 +1,40 @@
+########################################################
+## USB Host Interface Signal
+## FMC_LPC
+########################################################
+NET "SL_AD[0]"          LOC = "B34";    ## C19 on J63
+NET "SL_AD[1]"          LOC = "C33";    ## C18 on J63
+NET "SL_DT[0]"          LOC = "K26";    ## G6  on J63
+NET "SL_DT[1]"          LOC = "K27";    ## G7  on J63
+NET "SL_DT[2]"          LOC = "F31";    ## D8  on J63
+NET "SL_DT[3]"          LOC = "E31";    ## D9  on J63
+NET "SL_DT[4]"          LOC = "G31";    ## H7  on J63
+NET "SL_DT[5]"          LOC = "H30";    ## H8  on J63
+NET "SL_DT[6]"          LOC = "J31";    ## G9  on J63
+NET "SL_DT[7]"          LOC = "J32";    ## G10 on J63
+NET "SL_DT[8]"          LOC = "K28";    ## H10 on J63
+NET "SL_DT[9]"          LOC = "J29";    ## H11 on J63
+NET "SL_DT[10]"         LOC = "H34";    ## D11 on J63
+NET "SL_DT[11]"         LOC = "H33";    ## D12 on J63
+NET "SL_DT[12]"         LOC = "K33";    ## C10 on J63
+NET "SL_DT[13]"         LOC = "J34";    ## C11 on J63
+NET "SL_DT[14]"         LOC = "G32";    ## H13 on J63
+NET "SL_DT[15]"         LOC = "H32";    ## H14 on J63
+NET "SL_CLK_OUT"        LOC = "J30";    ## G12 on J63
+NET "SL_RST_N"          LOC = "D34";    ## D17 on J63
+NET "SL_RD_N"           LOC = "F30";    ## C14 on J63
+NET "SL_WR_N"           LOC = "L25";    ## D14 on J63
+NET "SL_OE_N"           LOC = "L26";    ## D15 on J63
+NET "SL_CS_N"           LOC = "K29";    ## G13 on J63
+NET "SL_DMA_RDY"        LOC = "D31";    ## H16 on J63
+NET "SL_WATER_MARK"     LOC = "G30";    ## C15 on J63
+NET "SL_PKTEND_N"       LOC = "E32";    ## G15 on J63
+
+NET	"SL_*"		IOSTANDARD=LVCMOS25 | DRIVE = 24 | SLEW = FAST | IOB = FORCE;
+
+NET "LB_CLK"     LOC = "R31";    
+NET "LB_CLK"     IOSTANDARD = LVCMOS25; 
+NET "EXT_DET"     LOC = "C34";    
+NET "EXT_DET"     IOSTANDARD = LVCMOS25; 
+NET "FPGA_DONE"     LOC = "R29";    
+NET "FPGA_DONE"     IOSTANDARD = LVCMOS25; 

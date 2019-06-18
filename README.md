@@ -34,8 +34,10 @@ This example tests memory in the FPGA through USB.
 # 5. <a name="SHA256 with AMBA AHB"></a>fex_0005_amba_ahb_sha256
 *To be added*
 
-# 6. <a name="AES with AMBA AXI"></a>fex_0006_amba_axi_aes
-*To be added*
+# 6. <a name="AES with AMBA AXI"></a>[fex_0006_amba_axi_aes](fex_0006_amba_axi_aes/README.md)
+This example tests Pipelined AES
+
+![AES example](fex_0006_amba_axi_aes/doc/images/con-fmc-aes.png "AES example")
 
 # 7. <a name="XFFT with AMBA AXI"></a>[fex_0007_amba_xfft](fex_0007_amba_axi_xfft/README.md)
 This example tests Xilinx FFT.

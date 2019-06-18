@@ -1,0 +1,38 @@
+`pragma protect begin_protected
+`pragma protect version = 2
+`pragma protect encrypt_agent = "XILINX"
+`pragma protect encrypt_agent_info = "Xilinx Encryption Tool 2015"
+`pragma protect begin_commonblock
+`pragma protect control error_handling = "delegated"
+`pragma protect control decryption=(activity==simulation) ? "true" : "true"
+`pragma protect end_commonblock
+`pragma protect begin_toolblock
+`pragma protect rights_digest_method="sha256"
+`pragma protect key_keyowner = "Xilinx", key_keyname= "xilinxt_2017_05", key_method = "rsa", key_block
+BEVzoz060gYpZHfVO4DOo5WhgONDM/NBDNgVcC/6XbBi7Fs93B0aFB2MrraV/fYB1LWF4FN3TOmD
+N698nyoH+3NK58dHX9J0o/P/uw4X7BrV/Fk7O6LObWGXpNNeoTXWzEXshaov5KGcS3M1ellL2kFl
+FFp24IzLiCl0b78+bFX46r0pKkJyuifHQFQWmWCmT3ubyIqS8lz4jfqYWLQBCww5Ol0YSWqOc7Xo
+g9rs2+G2ThWud8p1KxfCg422O2KeBjrHm2Yy/5y3TWJTjnPtb1LEtOLBGwSWNyGXSP7TUkb85Mf8
+0f8HfIg1qlOlDrFdbe9srdyGRJxNCy9RXq6uzg==
+
+`pragma protect control xilinx_configuration_visible = "true"
+`pragma protect control xilinx_enable_modification = "true"
+`pragma protect control xilinx_enable_probing = "true"
+`pragma protect control xilinx_enable_netlist_export = "true"
+`pragma protect control xilinx_enable_bitstream = "true"
+`pragma protect control decryption=(xilinx_activity==simulation) ? "true" : "true"
+`pragma protect end_toolblock="Uqoqj6+fjp6Z8nKyzlLbrpI0wWCp0cRYuO1KasQe1Zs="
+`pragma protect data_method = "AES128-CBC"
+`pragma protect encoding = (enctype = "BASE64", line_length = 76, bytes = 528)
+`pragma protect data_block
+X6J4xHKe+gCmcyUkib5aT/v8kZNFMLeweWwIc1U/l2jEKc53HlHHTJdlzHpXY/EaVFvUi55iE7Iv
++0wKnEa9vDb/oMF9acdJRvXkScCiN9/B762drYT3junyUDxkoicwgVUjcCqs60ENLZB/KMjn6/83
+XgjH6lmMnUf6gkjh8AAjGllCszqFoGGwzWx7bLFvopRBF38LTOWh4zPCsq1+2xMJ303mO5xMq+HA
+HKmZfzD70EGg9JcAa+DuO8qn5aCT6DGlL04p+iObPJGwb1Kk///7ThBGfZp4YkKkfvFHV8rg+SUs
+TLG3piAHN/uKaQvMGcoJcIv3L5n/U9vUCOv+brPzUWF+uOFjW7j0XaAt+cFQUYwCr9yg1hfmfwsH
+SzBNh/b7DeR1XMKnauG2mRfOhTvEkLeo+Vyesx6BLvAAiBKIVYOx78s7JvVDyqInOed9SyM+6NbK
+EqvKSAFajJB1XIhTlYmaE7A7UyqV9oNICSrQL5c+KRNjNFV4FFA5AXk9I5lJ1XOWPMxykEd6FKlp
+5mTGMGY9K5GHTC6w5Y3DS7MxiyR8jxm/Tdd/Lxpe5BQc+RWp6AOLkezHIGKAdhQkNVPzTLKDJxtr
+HTcgELaTtEjqW8KSar2OhWXwW/U/0a15iAT1b2/FlqwuVPt0Dnb1Z+d2zaRVFNMK0diR45I9gL6c
+ZgQoGC+fb30gLKPwdHD+
+`pragma protect end_protected

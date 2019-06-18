@@ -1,0 +1,66 @@
+########################################################
+## USB Host Interface Signal
+## FMC_HPC
+########################################################
+NET "SL_DT[0]"    LOC = "AF20";   ## LA00_CC_P
+NET "SL_DT[1]"    LOC = "AF21";   ## LA00_CC_N
+NET "SL_DT[2]"    LOC = "AK19";   ## LA01_CC_P
+NET "SL_DT[3]"    LOC = "AL19";   ## LA01_CC_N
+NET "SL_DT[4]"    LOC = "AC20";   ## LA02_P
+NET "SL_DT[5]"    LOC = "AD20";   ## LA02_N
+NET "SL_DT[6]"    LOC = "AC19";   ## LA03_P
+NET "SL_DT[7]"    LOC = "AD19";   ## LA03_N
+NET "SL_DT[8]"    LOC = "AF19";   ## LA04_P
+NET "SL_DT[9]"    LOC = "AE19";   ## LA04_N
+NET "SL_DT[10]"   LOC = "AG22";   ## LA05_P
+NET "SL_DT[11]"   LOC = "AH22";   ## LA05_N
+NET "SL_DT[12]"   LOC = "AG20";   ## LA06_P
+NET "SL_DT[13]"   LOC = "AG21";   ## LA06_N
+NET "SL_DT[14]"   LOC = "AK21";   ## LA07_P
+NET "SL_DT[15]"   LOC = "AJ21";   ## LA07_N      
+NET "SL_DT[16]"   LOC = "AM23";   ## LA15_P
+NET "SL_DT[17]"   LOC = "AL23";   ## LA15_N
+NET "SL_DT[18]"   LOC = "AP22";   ## LA16_P
+NET "SL_DT[19]"   LOC = "AN23";   ## LA16_N
+NET "SL_DT[20]"   LOC = "AN27";   ## LA17_CC_P
+NET "SL_DT[21]"   LOC = "AM27";   ## LA17_CC_N
+NET "SL_DT[22]"   LOC = "AH25";   ## LA18_CC_P
+NET "SL_DT[23]"   LOC = "AJ25";   ## LA18_CC_N
+NET "SL_DT[24]"   LOC = "AN25";   ## LA19_P
+NET "SL_DT[25]"   LOC = "AN24";   ## LA19_N
+NET "SL_DT[26]"   LOC = "AK23";   ## LA20_P
+NET "SL_DT[27]"   LOC = "AL24";   ## LA20_N
+NET "SL_DT[28]"   LOC = "AP29";   ## LA21_N
+NET "SL_DT[29]"   LOC = "AP27";   ## LA22_P
+NET "SL_DT[30]"   LOC = "AP26";   ## LA22_N
+NET "SL_DT[31]"   LOC = "AL26";   ## LA23_P   
+
+NET "SL_AD[1]"    LOC = "AN19";   ## LA14_P
+NET "SL_AD[0]"    LOC = "AN20";   ## LA14_N
+
+NET "SL_PCLK"     LOC = "AK22";   ## LA08_P
+NET "SL_CS_N"     LOC = "AJ22";   ## LA08_N
+NET "SL_WR_N"     LOC = "AM18" | PULLUP ;   ## LA09_P
+NET "SL_OE_N"     LOC = "AL18" | PULLUP ;   ## LA09_N
+NET "SL_RD_N"     LOC = "AM20" | PULLUP ;   ## LA10_P
+
+NET "SL_FLAGA"    LOC = "AL20" | PULLUP ;   ## LA10_N
+NET "SL_FLAGB"    LOC = "AM22" | PULLUP ;   ## LA11_P
+NET "SL_FLAGC"    LOC = "AN22" | PULLUP ;   ## LA11_N
+NET "SL_FLAGD"    LOC = "AL21" | PULLUP ;   ## LA12_N
+
+NET "SL_PKTEND_N" LOC = "AM21" | PULLUP ;   ## LA12_P
+NET "SL_RST_N"    LOC = "AP19" | PULLUP ;   ## LA13_P
+
+NET "SL_MODE[0]"  LOC = "AN18" | PULLDOWN ;   ## D18 on J2 / USB_GPIO27
+NET "SL_MODE[1]"  LOC = "AN29" | PULLDOWN ;   ## H25 on J2 / USB_GPIO45
+
+NET "SL_*"        IOSTANDARD=LVCMOS25 | DRIVE = 24 | SLEW = FAST ;
+
+NET "SYS_CLK" TNM_NET = "SYS_CLK";
+TIMESPEC "TS_SYS_CLK" = PERIOD "SYS_CLK" 100Mhz HIGH 50%;
+
+NET "SYS_CLK" TNM_NET=FFS sys_clk_grp;
+TIMESPEC TS_usbout = FROM sys_clk_grp to PADS(SL_*)  2 ns;
+TIMESPEC TS_usbin  = FROM PADS(SL_*)  to sys_clk_grp 2 ns;
+########################################################

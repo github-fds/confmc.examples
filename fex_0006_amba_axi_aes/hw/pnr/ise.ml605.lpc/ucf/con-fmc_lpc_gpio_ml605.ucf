@@ -1,0 +1,41 @@
+########################################################
+## GPIO  
+## FMC_LPC
+########################################################
+## GPIO 1
+NET "FMC_CLK0_M2C_P"         LOC = "A10";    ## H4  on J63, 2  on GPIO1
+NET "FMC_CLK1_M2C_P"         LOC = "F33";    ## G2  on J63, 3  on GPIO1
+NET "FMC_LA24_P    "         LOC = "N32";    ## H28 on J63, 4  on GPIO1
+NET "FMC_LA25_P    "         LOC = "P31";    ## G27 on J63, 5  on GPIO1
+NET "FMC_LA28_P    "         LOC = "N33";    ## H31 on J63, 6  on GPIO1
+NET "FMC_LA29_P    "         LOC = "N34";    ## G30 on J63, 7  on GPIO1
+NET "FMC_LA30_P    "         LOC = "M26";    ## H34 on J63, 8  on GPIO1
+NET "FMC_LA31_P    "         LOC = "M31";    ## G33 on J63, 9  on GPIO1
+NET "FMC_LA32_P    "         LOC = "N25";    ## H37 on J63, 10 on GPIO1
+NET "FMC_LA33_P    "         LOC = "K32";    ## G36 on J63, 11 on GPIO1
+NET "FMC_LA33_N    "         LOC = "K31";    ## G37 on J63, 14 on GPIO1
+NET "FMC_LA32_N    "         LOC = "M25";    ## H38 on J63, 15 on GPIO1
+NET "FMC_LA31_N    "         LOC = "L31";    ## G34 on J63, 16 on GPIO1
+NET "FMC_LA30_N    "         LOC = "M27";    ## H35 on J63, 17 on GPIO1
+NET "FMC_LA29_N    "         LOC = "P34";    ## G31 on J63, 18 on GPIO1
+NET "FMC_LA28_N    "         LOC = "M33";    ## H32 on J63, 19 on GPIO1
+NET "FMC_LA25_N    "         LOC = "P30";    ## G28 on J63, 20 on GPIO1
+NET "FMC_LA24_N    "         LOC = "P32";    ## H29 on J63, 21 on GPIO1
+NET "FMC_CLK1_M2C_N"         LOC = "G33";    ## G3  on J63, 22 on GPIO1
+NET "FMC_CLK0_M2C_N"         LOC = "B10";    ## H5  on J63, 23 on GPIO1
+                                                                        
+NET "FMC_*"                 IOSTANDARD = LVCMOS25;                      
+                                                                        
+## GPIO 2                                                               
+NET "FMC_DP0_C2M_P    "      LOC = "D1";     ## C2  on J63, 2  on GPIO2
+NET "FMC_DP0_M2C_P    "      LOC = "G3";     ## C6  on J63, 3  on GPIO2
+NET "FMC_GBTCLK0_M2C_P"      LOC = "M6";     ## D4  on J63, 4  on GPIO2
+NET "FMC_LA26_P       "      LOC = "L33";    ## D26 on J63, 5  on GPIO2
+NET "FMC_LA27_P       "      LOC = "R31";    ## C26 on J63, 6  on GPIO2
+NET "FMC_LA27_N       "      LOC = "R32";    ## C27 on J63, 9  on GPIO2
+NET "FMC_LA26_N       "      LOC = "M32";    ## D27 on J63, 10 on GPIO2
+NET "FMC_GBTCLK0_M2C_N"      LOC = "M5";     ## D5  on J63, 11 on GPIO2
+NET "FMC_DP0_M2C_N    "      LOC = "G4";     ## C7  on J63, 12 on GPIO2
+NET "FMC_DP0_C2M_N    "      LOC = "D2";     ## C3  on J63, 13 on GPIO2
+
+NET "FMC_*"                 IOSTANDARD = LVCMOS25; 
